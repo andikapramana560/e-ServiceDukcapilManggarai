@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('guest');
