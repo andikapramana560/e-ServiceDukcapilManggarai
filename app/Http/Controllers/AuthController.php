@@ -15,4 +15,14 @@ class AuthController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function form()
+    {
+        return view('admin.form');
+    }
+
+    public function datatable()
+    {
+        return view('admin.datatable');
+    }
 }
