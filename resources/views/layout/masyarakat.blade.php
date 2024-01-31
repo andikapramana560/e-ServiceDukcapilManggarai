@@ -128,7 +128,7 @@
       </li><!-- End Forms Nav -->
 
       <li class="nav-item">
-        <form action="" method="post">
+        <form action="/logout" method="post">
             @csrf
           <button type="submit" class="nav-link collapsed border-0" style="width: 100%"> 
           <i class="bi bi-box-arrow-in-right"></i>
@@ -140,6 +140,8 @@
     </ul>
 
   </aside><!-- End Sidebar-->
+
+  @include('sweetalert::alert')
 
   @yield('content')
 

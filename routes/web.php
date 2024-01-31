@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MasyarakatController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// auth
 Route::get('/', [AuthController::class, 'index'])->name('login')->middleware('guest');
-Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard')->middleware('guest');
-Route::get('/datatable', [AuthController::class, 'datatable'])->name('datatable')->middleware('guest');
-Route::get('/form', [AuthController::class, 'form'])->name('form')->middleware('guest');
+Route::post('/', [AuthController::class, 'authenticate'])->name('authenticate');
+Route::get('/registerAdm', [AuthController::class, 'registerAdm'])->name('registerAdm')->middleware('guest');
+Route::post('/registerAdm', [AuthController::class, 'storeRegisterAdm'])->name('doRegisterAdm');
+Route::get('/registerMsy', [AuthController::class, 'registerMsy'])->name('registerMsy')->middleware('guest');
+Route::post('/registerMsy', [AuthController::class, 'storeRegisterMsy'])->name('doRegisterMsy');
+Route::post('/logout', [AuthController::class, 'logout']);
+
+// admin
+Route::prefix('admin')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+});
+// masyarakat
+Route::prefix('masyarakat')
+    ->middleware('auth')
+    ->group(function () {
+        Route::get('/dashboard', [MasyarakatController::class, 'index'])->name('msy-dashboard');
+});
