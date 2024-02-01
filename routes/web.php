@@ -30,10 +30,19 @@ Route::prefix('admin')
     ->middleware('auth')
     ->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin-dashboard');
+        // penduduk
+        Route::get('/penduduk', [AdminController::class, 'penduduk'])->name('admin-penduduk');
+        Route::get('/addPenduduk', [AdminController::class, 'addPenduduk'])->name('admin-addPenduduk');
+        Route::post('/storePenduduk', [AdminController::class, 'storePenduduk'])->name('admin-storePenduduk');
+        Route::get('/showPenduduk/{id}', [AdminController::class, 'showPenduduk'])->name('admin-showPenduduk');
+
+        // pengajuan
 });
 // masyarakat
 Route::prefix('masyarakat')
     ->middleware('auth')
     ->group(function () {
         Route::get('/dashboard', [MasyarakatController::class, 'index'])->name('msy-dashboard');
+        // profil
+        // pengajuan
 });

@@ -44,7 +44,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/new-logo.png" alt="" width="40" height="40">
+        <img src="{{ asset('assets/img/new-logo.png') }}" alt="" width="40" height="40">
         <span class="d-none d-lg-block">User e-Service</span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -126,6 +126,13 @@
           </li>
         </ul>
       </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="bi bi-person"></i>
+          <span>Profil</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
         <form action="/logout" method="post">
