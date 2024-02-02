@@ -52,8 +52,8 @@
                     </td>
                     <td>
                         <a href="{{ route('admin-showPenduduk', $p->id) }}" class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
-                        <a href="" class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
-                        <form action="" method="POST" class="d-inline">
+                        <a href="{{ route('admin-editPenduduk', $p->id) }}" class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
+                        <form action="{{ route('admin-destroyPenduduk', $p->id) }}" method="POST" class="d-inline">
                           @method('delete')
                           @csrf
                           <button type="submit" class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Apakah anda yakin?')"><i class="bx bxs-trash"></i></button>

@@ -4,12 +4,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Tambah Penduduk</h1>
+      <h1>Detail Penduduk</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Admin</a></li>
           <li class="breadcrumb-item"><a href="{{ route('admin-penduduk') }}">Data Penduduk</a></li>
-          <li class="breadcrumb-item active">Tambah Data Penduduk</li>
+          <li class="breadcrumb-item active">Detail Data Penduduk</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -20,8 +20,6 @@
           
           <div class="card">
             <div class="card-body pt-3">
-              <form class="needs-validation" method="POST" action=""> 
-                @csrf
               <div class="tab-content pt-3">
                 <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                   <div class="row g-3">
@@ -119,11 +117,12 @@
               {{-- button submit here --}}
               @if($penduduk[0]->status_aktivasi == 0)
               <div class="col-12 mt-3">
-                <button class="btn btn-primary" type="submit">Aktifkan Penduduk</button>
+                <form action="" method="POST" class="d-inline">
+                  @csrf
+                  <button class="btn btn-primary" type="submit" onclick="return confirm('Apakah anda yakin?')">Aktifkan Penduduk</button>
+                </form>
               </div>
               @endif
-              {{-- form end here --}}
-              </form>
             </div>
           </div>
         </div>

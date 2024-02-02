@@ -71,7 +71,7 @@
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Jenis Kelamin</label>
                         <select class="form-select" name="jns_kelamin" aria-label="Default select example">
-                          <option selected>Pilih Jenis Kelamin Anda</option>
+                          <option selected disabled>Pilih Jenis Kelamin Anda</option>
                           <option value="Laki-Laki">Laki-Laki</option>
                           <option value="Perempuan">Perempuan</option>
                         </select>
@@ -81,7 +81,7 @@
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Agama</label>
                         <select class="form-select" name="agama" aria-label="Default select example">
-                          <option selected>Pilih Agama Anda</option>
+                          <option selected disabled>Pilih Agama Anda</option>
                           <option value="Hindu">Hindu</option>
                           <option value="Islam">Islam</option>
                           <option value="Kristen Protestan">Kristen Protestan</option>
@@ -95,7 +95,7 @@
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Status Perkawinan</label>
                         <select class="form-select" name="status_perkawinan" aria-label="Default select example">
-                          <option selected>Pilih Status Perkawinan Anda</option>
+                          <option selected disabled>Pilih Status Perkawinan Anda</option>
                           <option value="Sudah Menikah">Sudah Menikah</option>
                           <option value="Belum Menikah">Belum Menikah</option>
                         </select>
@@ -105,7 +105,7 @@
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Pekerjaan</label>
                         <select class="form-select" name="pekerjaan" aria-label="Default select example">
-                          <option selected>Pilih Pekerjaan Anda</option>
+                          <option selected disabled>Pilih Pekerjaan Anda</option>
                           <option value="PNS">PNS</option>
                           <option value="Pegawai Swasta">Pegawai Swasta</option>
                           <option value="Wiraswasta">Wiraswasta</option>
