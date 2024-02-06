@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Masyarakat</title>
+  <title>Penduduk</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -93,14 +93,14 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link " href="index.html">
+        <a class="nav-link {{ ($title === 'Dashboard') ? '' : 'collapsed' }}" href="{{ route('pend-dashboard') }}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link {{ ($title === 'Pengajuan') ? '' : 'collapsed' }}" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-journal-text"></i><span>Pengajuan</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
@@ -110,7 +110,7 @@
             </a>
           </li>
           <li>
-            <a href="forms-layouts.html">
+            <a href="{{ route('pend-pengajuanKtp') }}">
               <i class="bi bi-circle"></i><span>Pengajuan Kartu Tanda Penduduk (KTP)</span>
             </a>
           </li>
@@ -128,7 +128,7 @@
       </li><!-- End Forms Nav -->
 
       <li class="nav-item">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link {{ ($title === 'Profil') ? '' : 'collapsed' }}" href="index.html">
           <i class="bi bi-person"></i>
           <span>Profil</span>
         </a>

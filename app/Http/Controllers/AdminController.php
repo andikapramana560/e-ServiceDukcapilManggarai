@@ -119,7 +119,7 @@ class AdminController extends Controller
     public function destroyPenduduk($id){
         Penduduk::where('id', $id)->delete();
         User::where('id_penduduk', $id)->delete();
-        Alert::success('Success', 'Data penduduk berhasil dihap;us!');
+        Alert::success('Success', 'Data penduduk berhasil dihapus!');
         return redirect()->route('admin-penduduk');
     }
     // end penduduk

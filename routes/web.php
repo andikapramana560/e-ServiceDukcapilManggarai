@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\MasyarakatController;
+use App\Http\Controllers\PendudukController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,10 +42,12 @@ Route::prefix('admin')
         // pengajuan
 });
 // masyarakat
-Route::prefix('masyarakat')
+Route::prefix('penduduk')
     ->middleware('auth')
     ->group(function () {
-        Route::get('/dashboard', [MasyarakatController::class, 'index'])->name('msy-dashboard');
+        Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');
         // profil
         // pengajuan
+        Route::get('/pengajuanKtp', [PendudukController::class, 'pengajuanKtp'])->name('pend-pengajuanKtp');
+        Route::get('/addPengajuanKtp', [PendudukController::class, 'addPengajuanKtp'])->name('pend-addPengajuanKtp');
 });

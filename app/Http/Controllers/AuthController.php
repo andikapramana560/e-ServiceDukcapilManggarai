@@ -80,7 +80,7 @@ class AuthController extends Controller
             return redirect()->intended('/admin/dashboard');
         } elseif (Auth::attempt(['email' => $credentials['email'], 'password' => $credentials['password'], 'role' => '1', 'status_aktivasi' => '1'])) {
             $request->session()->regenerate();
-            return redirect()->intended('/masyarakat/dashboard');
+            return redirect()->intended('/penduduk/dashboard');
         } else {
             Alert::error('error', 'Login Gagal!');
             return back()->with('error', 'Login Gagal!');
