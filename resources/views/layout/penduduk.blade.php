@@ -105,7 +105,7 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="forms-elements.html">
+            <a href="{{ route('pend-pengajuanKk') }}">
               <i class="bi bi-circle"></i><span>Pengajuan Kartu Keluarga (KK)</span>
             </a>
           </li>
@@ -115,12 +115,12 @@
             </a>
           </li>
           <li>
-            <a href="forms-editors.html">
+            <a href="{{ route('pend-pengajuanAkl') }}">
               <i class="bi bi-circle"></i><span>Pengajuan Akta Kelahiran</span>
             </a>
           </li>
           <li>
-            <a href="forms-validation.html">
+            <a href="{{ route('pend-pengajuanAkm') }}">
               <i class="bi bi-circle"></i><span>Pengajuan Akta Kematian</span>
             </a>
           </li>

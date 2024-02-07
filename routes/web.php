@@ -47,7 +47,17 @@ Route::prefix('penduduk')
     ->group(function () {
         Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');
         // profil
-        // pengajuan
+        
+        // pengajuan ktp
         Route::get('/pengajuanKtp', [PendudukController::class, 'pengajuanKtp'])->name('pend-pengajuanKtp');
         Route::get('/addPengajuanKtp', [PendudukController::class, 'addPengajuanKtp'])->name('pend-addPengajuanKtp');
+        // pengajuan kk
+        Route::get('/pengajuanKk', [PendudukController::class, 'pengajuanKk'])->name('pend-pengajuanKk');
+        Route::get('/addPengajuanKk', [PendudukController::class, 'addPengajuanKk'])->name('pend-addPengajuanKk');
+        // pengajuan akta kelahiran
+        Route::get('/pengajuanAktaKelahiran', [PendudukController::class, 'pengajuanAktaKelahiran'])->name('pend-pengajuanAkl');
+        Route::get('/addPengajuanAktaKelahiran', [PendudukController::class, 'addPengajuanAktaKelahiran'])->name('pend-addPengajuanAkl');
+        // pengajuan akta kematian
+        Route::get('/pengajuanAktaKematian', [PendudukController::class, 'pengajuanAktaKematian'])->name('pend-pengajuanAkm');
+        Route::get('/addPengajuanAktaKematian', [PendudukController::class, 'addPengajuanAktaKematian'])->name('pend-addPengajuanAkm');
 });
