@@ -16,6 +16,7 @@ return new class extends Migration
             $table->char('id_penduduk', 16);
             $table->string('nama_anak');
             $table->string('anak_ke');
+            $table->string('jns_kel_anak');
             $table->string('tmp_lahir_anak');
             $table->date('tgl_lahir_anak');
             $table->string('nama_ayah');

@@ -4,12 +4,12 @@
 <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Pengajuan KK</h1>
+      <h1>Pengajuan Akta Kematian</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('pend-dashboard') }}">Penduduk</a></li>
           <li class="breadcrumb-item">Pengajuan</li>
-          <li class="breadcrumb-item active">KK</li>
+          <li class="breadcrumb-item active">Akta Kematian</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -21,7 +21,7 @@
           <div class="card">
             <div class="card-body table-responsive">
               <h5 class="card-title">Data Pengajuan</h5>
-              <a href="{{ route('pend-addPengajuanKtp') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
+              <a href="{{ route('pend-addPengajuanAkm') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>

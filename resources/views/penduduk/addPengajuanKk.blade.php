@@ -25,24 +25,168 @@
               <div class="tab-content pt-3">
                 <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                   <div class="row g-3">
-
+                    <form action="" method="post">
+                      @csrf
                       <div class="col-12">
-                        <label for="yourPassword" class="form-label">NIK Pemohon</label>
+                        <label for="yourPassword" class="form-label">Nama Kepala Keluarga</label>
+                        <input type="text" name="nik" class="form-control" id="yourPassword" value="{{ old('nik') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">NIK Kepala Keluarga</label>
+                        <input type="text" name="nik" class="form-control" id="yourPassword" value="{{ old('nik') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="validationCustom04" class="form-label">Jenis Kelamin</label>
+                        <select class="form-select" name="jns_kel" required>
+                          <option selected disabled value="">Pilih...</option>
+                          <option value="Laki-Laki">Laki-Laki</option>
+                          <option value="Perempuan">Perempuan</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Gender/jenis Kelamin harus dipilih!
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Tempat Lahir</label>
                         <input type="text" name="nik" class="form-control" id="yourPassword" value="{{ old('nik') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                         
-                      <div class="col-12">
-                        <label for="yourPassword" class="form-label">Tanggal Pengajuan</label>
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Tanggal Lahir</label>
                         <input type="date" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
-  
-                      <div class="col-12">
-                        <label for="yourPassword" class="form-label">Dokumen Pendukung</label>
+
+                      <div class="col-6">
+                        <label for="validationCustom04" class="form-label">Agama</label>
+                        <select class="form-select" id="validationCustom04" name="agama" required>
+                            <option selected disabled>Pilih...</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Islam">Islam</option>
+                            <option value="Kristen Protestan">Kristen Protestan</option>
+                            <option value="Kristen Katolik">Kristen Katolik</option>
+                            <option value="Budha">Budha</option>
+                            <option value="Kong Hu Chu">Kong Hu Chu</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Pilih Agama anda!
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Pendidikan</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Pekerjaan</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Golongan Darah</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="validationCustom04" class="form-label">Status Pernikahan</label>
+                        <select class="form-select @error('status_pernikahan') is-invalid @enderror" id="validationCustom04" name="status_pernikahan" required>
+                            <option selected disabled>Pilih...</option>
+                            <option value="Sudah Menikah">Sudah Menikah</option>
+                            <option value="Belum Menikah">Belum Menikah</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Status pernikahan harus dipilih!
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Tanggal Pernikahan</label>
+                        <input type="date" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="validationCustom04" class="form-label">Status Hubungan Keluarga</label>
+                        <select class="form-select @error('status_pernikahan') is-invalid @enderror" id="validationCustom04" name="status_pernikahan" required>
+                            <option selected disabled>Pilih...</option>
+                            <option value="Sudah Menikah">Sudah Menikah</option>
+                            <option value="Belum Menikah">Belum Menikah</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Status pernikahan harus dipilih!
+                        </div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Kewarganegaraan</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Imigrasi</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Nama Ayah</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Nama Ibu</label>
+                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Ijin Tinggal</label>
                         <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Akta Nikah</label>
+                        <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Kartu Tanda Penduduk</label>
+                        <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Data Pendukung</label>
+                        <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-6">
+                        <label for="yourPassword" class="form-label">Dokumen Surat Pernyataan</label>
+                        <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="yourPassword" class="form-label">Keterangan</label>
+                        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Kosongkan jika tidak ada keterangan"></textarea>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div><!-- End Bordered Tabs -->

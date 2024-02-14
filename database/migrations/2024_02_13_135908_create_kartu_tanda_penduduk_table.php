@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->char('id_penduduk', 16);
             $table->string('nama_pend');
+            $table->string('jns_kel_pend');
             $table->string('tempat_lahir');
             $table->date('tgl_lahir');
             $table->string('alamat');
