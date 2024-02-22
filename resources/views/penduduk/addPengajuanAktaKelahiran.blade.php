@@ -14,6 +14,37 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-6">
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Petunjuk Pengisian Form</h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Pada form dokumen surat keterangan lahir, 
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Jika semua form telah terisi, silahkan klik tombol submit
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+        </div>
+      </div>
+    </section>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">

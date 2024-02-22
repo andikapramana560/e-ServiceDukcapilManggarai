@@ -45,19 +45,29 @@ Route::prefix('admin')
 Route::prefix('penduduk')
     ->middleware('auth')
     ->group(function () {
-        Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');
-        // profil
-        
+        Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');        
         // pengajuan ktp
         Route::get('/pengajuanKtp', [PendudukController::class, 'pengajuanKtp'])->name('pend-pengajuanKtp');
         Route::get('/addPengajuanKtp', [PendudukController::class, 'addPengajuanKtp'])->name('pend-addPengajuanKtp');
+        Route::post('/addPengajuanKtp', [PendudukController::class, 'storePengajuanKtp'])->name('pend-storePengajuanKtp');
+        Route::get('/showPengajuanKtp/{id}', [PendudukController::class, 'showPengajuanKtp'])->name('pend-showPengajuanKtp');
+        Route::delete('/destroyPengajuanKtp/{id}', [PendudukController::class, 'destroyPengajuanKtp'])->name('pend-destroyPengajuanKtp');
         // pengajuan kk
         Route::get('/pengajuanKk', [PendudukController::class, 'pengajuanKk'])->name('pend-pengajuanKk');
         Route::get('/addPengajuanKk', [PendudukController::class, 'addPengajuanKk'])->name('pend-addPengajuanKk');
+        Route::post('/addPengajuanKk', [PendudukController::class, 'storePengajuanKk'])->name('pend-storePengajuanKk');
+        Route::get('/showPengajuanKk/{id}', [PendudukController::class, 'showPengajuanKk'])->name('pend-showPengajuanKk');
+        Route::delete('/destroyPengajuanKk/{id}', [PendudukController::class, 'destroyPengajuanKk'])->name('pend-destroyPengajuanKk');
         // pengajuan akta kelahiran
         Route::get('/pengajuanAktaKelahiran', [PendudukController::class, 'pengajuanAktaKelahiran'])->name('pend-pengajuanAkl');
         Route::get('/addPengajuanAktaKelahiran', [PendudukController::class, 'addPengajuanAktaKelahiran'])->name('pend-addPengajuanAkl');
+        Route::post('/addPengajuanAktaKelahiran', [PendudukController::class, 'storePengajuanAktaKelahiran'])->name('pend-storePengajuanAkl');
+        Route::get('/showPengajuanAktaKelahiran/{id}', [PendudukController::class, 'showPengajuanAktaKelahiran'])->name('pend-showPengajuanAkl');
+        Route::delete('/destroyPengajuanAktaKelahiran/{id}', [PendudukController::class, 'destroyPengajuanAktaKelahiran'])->name('pend-destroyPengajuanAkl');
         // pengajuan akta kematian
         Route::get('/pengajuanAktaKematian', [PendudukController::class, 'pengajuanAktaKematian'])->name('pend-pengajuanAkm');
         Route::get('/addPengajuanAktaKematian', [PendudukController::class, 'addPengajuanAktaKematian'])->name('pend-addPengajuanAkm');
+        Route::post('/addPengajuanAktaKematian', [PendudukController::class, 'storePengajuanAktaKematian'])->name('pend-storePengajuanAkm');
+        Route::get('/showPengajuanAktaKematian/{id}', [PendudukController::class, 'showPengajuanAktaKematian'])->name('pend-showPengajuanAkm');
+        Route::delete('/destroyPengajuanAktaKematian/{id}', [PendudukController::class, 'destroyPengajuanAktaKematian'])->name('pend-destroyPengajuanAkm');
 });

@@ -14,6 +14,37 @@
       </nav>
     </div><!-- End Page Title -->
 
+    <section class="section dashboard">
+      <div class="row">
+        <div class="col-6">
+          <!-- Recent Activity -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Petunjuk Pengisian Form</h5>
+
+              <div class="activity">
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Pada form dokumen kartu keluarga, anda scan atau foto dahulu kartu keluarga anda, kemudian masukkan file hasil scan tadi ke form kartu keluarga
+                  </div>
+                </div><!-- End activity item-->
+
+                <div class="activity-item d-flex">
+                  <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                  <div class="activity-content">
+                    Jika semua form telah terisi, silahkan klik tombol submit
+                  </div>
+                </div><!-- End activity item-->
+
+              </div>
+
+            </div>
+          </div><!-- End Recent Activity -->
+        </div>
+      </div>
+    </section>
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
@@ -29,12 +60,12 @@
                       @csrf
                       <div class="col-6">
                         <label for="yourPassword" class="form-label">Nama</label>
-                        <input type="text" name="nik" class="form-control" id="yourPassword" value="{{ old('nik') }}" required>
+                        <input type="text" name="nama_pend" class="form-control" id="yourPassword" value="{{ old('nama_pend') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-6">
                         <label for="validationCustom04" class="form-label">Jenis Kelamin</label>
-                        <select class="form-select" name="jns_kel" required>
+                        <select class="form-select" name="jns_kel_pend" required>
                           <option selected disabled value="">Pilih...</option>
                           <option value="Laki-Laki">Laki-Laki</option>
                           <option value="Perempuan">Perempuan</option>
@@ -45,7 +76,7 @@
                       </div>
                       <div class="col-6">
                         <label for="yourPassword" class="form-label">Tempat Lahir</label>
-                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <input type="text" name="tempat_lahir" class="form-control" id="yourPassword" value="{{ old('tempat_lahir') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
 
@@ -57,13 +88,13 @@
 
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Alamat</label>
-                        <textarea name="" id="" cols="30" rows="4" class="form-control"></textarea>
+                        <textarea name="alamat" id="" cols="30" rows="4" class="form-control"></textarea>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-6">
                         <label for="validationCustom04" class="form-label">Agama</label>
                         <select class="form-select" id="validationCustom04" name="agama" required>
-                            <option selected disabled>Pilih...</option>
+                            <option selected disabled value="">Pilih...</option>
                             <option value="Hindu">Hindu</option>
                             <option value="Islam">Islam</option>
                             <option value="Kristen Protestan">Kristen Protestan</option>
@@ -78,7 +109,7 @@
                       <div class="col-6">
                         <label for="validationCustom04" class="form-label">Status Pernikahan</label>
                         <select class="form-select @error('status_pernikahan') is-invalid @enderror" id="validationCustom04" name="status_pernikahan" required>
-                            <option selected disabled>Pilih...</option>
+                            <option selected disabled value="">Pilih...</option>
                             <option value="Sudah Menikah">Sudah Menikah</option>
                             <option value="Belum Menikah">Belum Menikah</option>
                         </select>
@@ -88,22 +119,22 @@
                       </div>
                       <div class="col-6">
                         <label for="yourPassword" class="form-label">Pekerjaan</label>
-                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <input type="text" name="pekerjaan" class="form-control" id="yourPassword" value="{{ old('pekerjaan') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-6">
                         <label for="yourPassword" class="form-label">Kewarganegaraan</label>
-                        <input type="text" name="tgl_lahir" class="form-control" id="yourPassword" value="{{ old('tgl_lahir') }}" required>
+                        <input type="text" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Dokumen Kartu Keluarga</label>
-                        <input type="file" name="kewarganegaraan" class="form-control" id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
+                        <input type="file" name="dok_fc_kk" class="form-control" id="yourPassword" value="{{ old('dok_fc_kk') }}" required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">Keterangan</label>
-                        <textarea name="" id="" cols="30" rows="4" class="form-control" placeholder="Kosongkan jika tidak ada keterangan"></textarea>
+                        <textarea name="keterangan" id="" cols="30" rows="4" class="form-control" placeholder="Kosongkan jika tidak ada keterangan"></textarea>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                     </form>

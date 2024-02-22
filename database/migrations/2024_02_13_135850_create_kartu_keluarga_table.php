@@ -35,6 +35,7 @@ return new class extends Migration
             $table->string('dok_fc_ktp');
             $table->string('dok_fc_data_pendukung');
             $table->string('dok_surat_pernyataan');
+            $table->date('tgl_pengajuan');
             $table->string('keterangan');
             $table->string('catatan');
             $table->string('status');

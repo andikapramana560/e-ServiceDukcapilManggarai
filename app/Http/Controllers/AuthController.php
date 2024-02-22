@@ -82,8 +82,8 @@ class AuthController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/penduduk/dashboard');
         } else {
-            Alert::error('error', 'Login Gagal!');
-            return back()->with('error', 'Login Gagal!');
+            Alert::error('error', 'Username atau Password anda salah!');
+            return back();
         }
     }
 

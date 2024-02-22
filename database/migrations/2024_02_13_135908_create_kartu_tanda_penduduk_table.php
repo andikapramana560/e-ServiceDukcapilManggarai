@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('pekerjaan');
             $table->string('kewarganegaraan');
             $table->string('dok_fc_kk');
+            $table->date('tgl_pengajuan');
             $table->string('keterangan');
             $table->string('catatan');
             $table->string('status');

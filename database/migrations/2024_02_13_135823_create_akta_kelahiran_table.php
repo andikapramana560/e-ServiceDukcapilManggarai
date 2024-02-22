@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('dok_surat_ket_sekolah');
             $table->string('dok_akta_anak_sblmnya');
             $table->string('dok_surat_ket_kematian');
+            $table->date('tgl_pengajuan');
             $table->string('keterangan');
             $table->string('catatan');
             $table->string('status');
