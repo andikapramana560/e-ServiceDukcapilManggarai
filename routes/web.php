@@ -39,7 +39,19 @@ Route::prefix('admin')
         Route::get('/editPenduduk/{id}', [AdminController::class, 'editPenduduk'])->name('admin-editPenduduk');
         Route::post('/editPenduduk/{id}', [AdminController::class, 'updatePenduduk'])->name('admin-updatePenduduk');
         Route::delete('/destroyPenduduk/{id}', [AdminController::class, 'destroyPenduduk'])->name('admin-destroyPenduduk');
-        // pengajuan
+        // pengajuan ktp
+        Route::get('/pengajuanKtp', [AdminController::class, 'pengajuanKtp'])->name('admin-pengajuanKtp');
+        Route::get('/showPengajuanKtp/{id}', [AdminController::class, 'showPengajuanKtp'])->name('admin-showPengajuanKtp');
+        Route::post('/showPengajuanKtp/{id}', [AdminController::class, 'processPengajuanKtp'])->name('admin-processPengajuanKtp');
+
+        // pengajuan kk
+        Route::get('/pengajuanKk', [AdminController::class, 'pengajuanKk'])->name('admin-pengajuanKk');
+
+        // pengajuan akta kelahiran
+        Route::get('/pengajuanAktaKelahiran', [AdminController::class, 'pengajuanAktaKelahiran'])->name('admin-pengajuanAktaKelahiran');
+
+        // pengajuan akta kematian
+        Route::get('/pengajuanAktaKematian', [AdminController::class, 'pengajuanAktaKematian'])->name('admin-pengajuanAktaKematian');
     });
 // masyarakat
 Route::prefix('penduduk')

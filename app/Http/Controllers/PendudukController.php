@@ -21,8 +21,11 @@ class PendudukController extends Controller
     // pengajuan ktp
     public function pengajuanKtp()
     {
-        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->get();
-        return view('penduduk.pengajuanKtp', [
+        $id_penduduk = auth()->user()->id_penduduk;
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')
+            ->where('id_penduduk', $id_penduduk)
+            ->get();
+        return view('penduduk.pengajuanKtp.index', [
             'title' => 'Pengajuan',
             'pengajuanktp' => $pengajuanKtp
         ]);
@@ -30,7 +33,7 @@ class PendudukController extends Controller
 
     public function addPengajuanktp()
     {
-        return view('penduduk.addPengajuanKtp', [
+        return view('penduduk.pengajuanKtp.add', [
             'title' => 'Pengajuan'
         ]);
     }
@@ -38,7 +41,7 @@ class PendudukController extends Controller
     public function storePengajuanKtp(Request $request)
     {
         // get user id penduduk
-        $id_penduduk = auth()->user()->id;
+        $id_penduduk = auth()->user()->id_penduduk;
         $validatedData = $request->validate([
             'nama_pend' => 'required',
             'jns_kel_pend' => 'required',
@@ -67,7 +70,7 @@ class PendudukController extends Controller
     public function showPengajuanKtp($id)
     {
         $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
-        return view('penduduk.showPengajuanKtp', [
+        return view('penduduk.pengajuanKtp.show', [
             'title' => 'Pengajuan',
             'ktp' => $pengajuanKtp
         ]);
@@ -75,6 +78,11 @@ class PendudukController extends Controller
 
     public function editPengajuanKtp($id)
     {
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
+        return view('penduduk.pengajuanKtp.edit', [
+            'title' => 'Pengajuan',
+            'ktp' => $pengajuanKtp
+        ]);
     }
 
     public function updatePengajuanKtp($id, Request $request)
@@ -93,14 +101,14 @@ class PendudukController extends Controller
     // pengajuan kk
     public function pengajuanKk()
     {
-        return view('penduduk.pengajuanKk', [
+        return view('penduduk.pengajuanKk.index', [
             'title' => 'Pengajuan'
         ]);
     }
 
     public function addPengajuanKk()
     {
-        return view('penduduk.addPengajuanKk', [
+        return view('penduduk.pengajuanKk.add', [
             'title' => 'Pengajuan'
         ]);
     }
@@ -155,14 +163,14 @@ class PendudukController extends Controller
     // pengajuan akta kelahiran
     public function pengajuanAktaKelahiran()
     {
-        return view('penduduk.pengajuanAktaKelahiran', [
+        return view('penduduk.pengajuanAktaKelahiran.index', [
             'title' => 'Pengajuan'
         ]);
     }
 
     public function addPengajuanAktaKelahiran()
     {
-        return view('penduduk.addPengajuanAktaKelahiran', [
+        return view('penduduk.pengajuanAktaKelahiran.add', [
             'title' => 'Pengajuan'
         ]);
     }
@@ -214,14 +222,14 @@ class PendudukController extends Controller
     // pengajuan akta kematian
     public function pengajuanAktaKematian()
     {
-        return view('penduduk.pengajuanAktaKematian', [
+        return view('penduduk.pengajuanAktaKematian.index', [
             'title' => 'Pengajuan'
         ]);
     }
 
     public function addPengajuanAktaKematian()
     {
-        return view('penduduk.addPengajuanAktaKematian', [
+        return view('penduduk.pengajuanAktaKematian.add', [
             'title' => 'Pengajuan'
         ]);
     }
