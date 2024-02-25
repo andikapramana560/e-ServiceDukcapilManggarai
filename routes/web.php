@@ -40,17 +40,19 @@ Route::prefix('admin')
         Route::post('/editPenduduk/{id}', [AdminController::class, 'updatePenduduk'])->name('admin-updatePenduduk');
         Route::delete('/destroyPenduduk/{id}', [AdminController::class, 'destroyPenduduk'])->name('admin-destroyPenduduk');
         // pengajuan
-});
+    });
 // masyarakat
 Route::prefix('penduduk')
     ->middleware('auth')
     ->group(function () {
-        Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');        
+        Route::get('/dashboard', [PendudukController::class, 'index'])->name('pend-dashboard');
         // pengajuan ktp
         Route::get('/pengajuanKtp', [PendudukController::class, 'pengajuanKtp'])->name('pend-pengajuanKtp');
         Route::get('/addPengajuanKtp', [PendudukController::class, 'addPengajuanKtp'])->name('pend-addPengajuanKtp');
         Route::post('/addPengajuanKtp', [PendudukController::class, 'storePengajuanKtp'])->name('pend-storePengajuanKtp');
         Route::get('/showPengajuanKtp/{id}', [PendudukController::class, 'showPengajuanKtp'])->name('pend-showPengajuanKtp');
+        Route::get('/editPengajuanKtp/{id}', [PendudukController::class, 'editPengajuanKtp'])->name('pend-editPengajuanKtp');
+        Route::post('/editPengajuanKtp/{id}', [PendudukController::class, 'editPengajuanKtp'])->name('pend-updatePengajuanKtp');
         Route::delete('/destroyPengajuanKtp/{id}', [PendudukController::class, 'destroyPengajuanKtp'])->name('pend-destroyPengajuanKtp');
         // pengajuan kk
         Route::get('/pengajuanKk', [PendudukController::class, 'pengajuanKk'])->name('pend-pengajuanKk');
@@ -70,4 +72,4 @@ Route::prefix('penduduk')
         Route::post('/addPengajuanAktaKematian', [PendudukController::class, 'storePengajuanAktaKematian'])->name('pend-storePengajuanAkm');
         Route::get('/showPengajuanAktaKematian/{id}', [PendudukController::class, 'showPengajuanAktaKematian'])->name('pend-showPengajuanAkm');
         Route::delete('/destroyPengajuanAktaKematian/{id}', [PendudukController::class, 'destroyPengajuanAktaKematian'])->name('pend-destroyPengajuanAkm');
-});
+    });

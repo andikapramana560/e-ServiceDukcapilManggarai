@@ -2,31 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ktp;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class PendudukController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         return view('penduduk.dashboard', [
             'title' => 'Dashboard'
         ]);
     }
 
     // pengajuan ktp
-    public function pengajuanKtp(){
+    public function pengajuanKtp()
+    {
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->get();
         return view('penduduk.pengajuanKtp', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'pengajuanktp' => $pengajuanKtp
         ]);
     }
 
-    public function addPengajuanktp(){
+    public function addPengajuanktp()
+    {
         return view('penduduk.addPengajuanKtp', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function storePengajuanKtp(Request $request){
+    public function storePengajuanKtp(Request $request)
+    {
         // get user id penduduk
         $id_penduduk = auth()->user()->id;
         $validatedData = $request->validate([
@@ -41,44 +51,62 @@ class PendudukController extends Controller
             'kewarganegaraan' => 'required',
             'dok_fc_kk' => 'required|file|max:1024',
         ]);
-        $usia = Carbon::parse($request->tgl_lahir)->age;
         $validatedData['id_penduduk'] = $id_penduduk;
+        $usia = Carbon::parse($request->tgl_lahir)->age;
         $validatedData['usia'] = $usia;
         $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
         $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-ktp');
         $validatedData['keterangan'] = $request->keterangan;
+        $validatedData['catatan'] = NULL;
         $validatedData['status'] = 0;
+        Ktp::create($validatedData);
+        Alert::success('Berhasil!', 'Pengajuan KTP Baru telah ditambahkan');
+        return redirect()->route('pend-pengajuanKtp');
     }
 
-    public function showPengajuanKtp($id){
-
+    public function showPengajuanKtp($id)
+    {
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
+        return view('penduduk.showPengajuanKtp', [
+            'title' => 'Pengajuan',
+            'ktp' => $pengajuanKtp
+        ]);
     }
 
-    public function destroyPengajuanKtp($id){
-        
+    public function editPengajuanKtp($id)
+    {
     }
 
-    // $validatedData = $request->validate([
-    //     'nama_poli' => 'required',
-    //     'deskripsi' => 'required',
-    //     'gambar' => 'required|file|max:1024',
-    // ]);
-    // $validatedData['gambar'] = $request->file('gambar')->store('gambar-poli');
-    
+    public function updatePengajuanKtp($id, Request $request)
+    {
+    }
+
+    public function destroyPengajuanKtp($id)
+    {
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
+        Storage::delete($pengajuanKtp[0]->dok_fc_kk);
+        Ktp::where('id', $id)->delete();
+        Alert::success('Success', 'Pengajuan berhasil dihapus!');
+        return redirect()->route('pend-pengajuanKtp');
+    }
+
     // pengajuan kk
-    public function pengajuanKk(){
+    public function pengajuanKk()
+    {
         return view('penduduk.pengajuanKk', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function addPengajuanKk(){
+    public function addPengajuanKk()
+    {
         return view('penduduk.addPengajuanKk', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function storePengajuanKk(Request $request){
+    public function storePengajuanKk(Request $request)
+    {
         // get user id penduduk
         $id_penduduk = auth()->user()->id;
         $validatedData = $request->validate([
@@ -115,25 +143,32 @@ class PendudukController extends Controller
         $validatedData['status'] = 0;
     }
 
-    public function showPengajuanKk($id){}
-    public function destroyPengajuanKk($id){}
+    public function showPengajuanKk($id)
+    {
+    }
+    public function destroyPengajuanKk($id)
+    {
+    }
 
     // anggota kk
 
     // pengajuan akta kelahiran
-    public function pengajuanAktaKelahiran(){
+    public function pengajuanAktaKelahiran()
+    {
         return view('penduduk.pengajuanAktaKelahiran', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function addPengajuanAktaKelahiran(){
+    public function addPengajuanAktaKelahiran()
+    {
         return view('penduduk.addPengajuanAktaKelahiran', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function storePengajuanAktaKelahiran(Request $request){
+    public function storePengajuanAktaKelahiran(Request $request)
+    {
         // get user id penduduk
         $id_penduduk = auth()->user()->id;
         $validatedData = $request->validate([
@@ -169,23 +204,30 @@ class PendudukController extends Controller
         $validatedData['status'] = 0;
     }
 
-    public function showPengajuanAktaKelahiran($id){}
-    public function destroyPengajuanAktaKelahiran($id){}
+    public function showPengajuanAktaKelahiran($id)
+    {
+    }
+    public function destroyPengajuanAktaKelahiran($id)
+    {
+    }
 
     // pengajuan akta kematian
-    public function pengajuanAktaKematian(){
+    public function pengajuanAktaKematian()
+    {
         return view('penduduk.pengajuanAktaKematian', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function addPengajuanAktaKematian(){
+    public function addPengajuanAktaKematian()
+    {
         return view('penduduk.addPengajuanAktaKematian', [
             'title' => 'Pengajuan'
         ]);
     }
 
-    public function storePengajuanAktaKematian(Request $request){
+    public function storePengajuanAktaKematian(Request $request)
+    {
         // get user id penduduk
         $id_penduduk = auth()->user()->id;
         $validatedData = $request->validate([
@@ -215,6 +257,10 @@ class PendudukController extends Controller
         $validatedData['status'] = 0;
     }
 
-    public function showPengajuanAktaKematian($id){}
-    public function destroyPengajuanAktaKematian($id){}
+    public function showPengajuanAktaKematian($id)
+    {
+    }
+    public function destroyPengajuanAktaKematian($id)
+    {
+    }
 }
