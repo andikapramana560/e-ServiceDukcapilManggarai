@@ -87,6 +87,28 @@ class PendudukController extends Controller
 
     public function updatePengajuanKtp($id, Request $request)
     {
+        $validatedData = $request->validate([
+            'nama_pend' => 'required',
+            'jns_kel_pend' => 'required',
+            'tempat_lahir' => 'required',
+            'tgl_lahir' => 'required|date',
+            'alamat' => 'required',
+            'agama' => 'required',
+            'status_pernikahan' => 'required',
+            'pekerjaan' => 'required',
+            'kewarganegaraan' => 'required',
+            'dok_fc_kk' => 'file|max:1024',
+        ]);
+        if ($request->file('dok_fc_kk')) {
+            $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-ktp');
+        }
+        $validatedData['keterangan'] = $request->keterangan;
+        $validatedData['status'] = 0;
+
+        Ktp::where('id', $id)
+            ->update($validatedData);
+        Alert::success('Success', 'Pengajuan berhasil diupdate!');
+        return redirect()->route('pend-pengajuanKtp');
     }
 
     public function destroyPengajuanKtp($id)

@@ -64,7 +64,7 @@ Route::prefix('penduduk')
         Route::post('/addPengajuanKtp', [PendudukController::class, 'storePengajuanKtp'])->name('pend-storePengajuanKtp');
         Route::get('/showPengajuanKtp/{id}', [PendudukController::class, 'showPengajuanKtp'])->name('pend-showPengajuanKtp');
         Route::get('/editPengajuanKtp/{id}', [PendudukController::class, 'editPengajuanKtp'])->name('pend-editPengajuanKtp');
-        Route::post('/editPengajuanKtp/{id}', [PendudukController::class, 'editPengajuanKtp'])->name('pend-updatePengajuanKtp');
+        Route::post('/editPengajuanKtp/{id}', [PendudukController::class, 'updatePengajuanKtp'])->name('pend-updatePengajuanKtp');
         Route::delete('/destroyPengajuanKtp/{id}', [PendudukController::class, 'destroyPengajuanKtp'])->name('pend-destroyPengajuanKtp');
         // pengajuan kk
         Route::get('/pengajuanKk', [PendudukController::class, 'pengajuanKk'])->name('pend-pengajuanKk');

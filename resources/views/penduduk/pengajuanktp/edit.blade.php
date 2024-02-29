@@ -146,12 +146,22 @@
                                                     KK</a>
                                             </div>
                                             <div class="col-12">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Keterangan</label>
                                                 <textarea name="keterangan" id="" cols="30" rows="4" class="form-control"
                                                     placeholder="Kosongkan jika tidak ada keterangan"></textarea>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="col-12 mt-3">
+                                        <button class="btn btn-primary" type="submit">Update</button>
                                     </div>
                                 </form>
                             </div><!-- End Bordered Tabs -->
