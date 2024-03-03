@@ -169,4 +169,52 @@ class AdminController extends Controller
         return redirect()->route('admin-pengajuanKtp');
     }
     // end pengajuan ktp
+
+    // pengajuan Akta Kelahiran
+    public function pengajuanAktaKelahiran()
+    {
+        return view('admin.pengajuanAktaKelahiran.index', [
+            'title' => 'Pengajuan',
+        ]);
+    }
+    public function showPengajuanAktaKelahiran()
+    {
+    }
+    public function processPengajuanAktaKelahiran()
+    {
+    }
+    // end pengajuan Akta Kelahiran
+
+    // pengajuan Akta Kematian
+    public function pengajuanAktaKematian()
+    {
+        return view('admin.pengajuanAktaKematian.index', [
+            'title' => 'Pengajuan',
+        ]);
+    }
+    public function showPengajuanAktaKematian()
+    {
+    }
+    public function processPengajuanAktaKematian()
+    {
+    }
+    // end pengajuan Akta Kematian
+
+    // pengajuan KK
+    public function pengajuanKk()
+    {
+        return view('admin.pengajuanKk.index', [
+            'title' => 'Pengajuan',
+        ]);
+    }
+    public function showPengajuanKk()
+    {
+    }
+    public function showAnggotaKeluarga()
+    {
+    }
+    public function processKk()
+    {
+    }
+    // end pengajuan KK
 }

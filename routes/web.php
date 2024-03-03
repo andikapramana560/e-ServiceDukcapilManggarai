@@ -43,15 +43,19 @@ Route::prefix('admin')
         Route::get('/pengajuanKtp', [AdminController::class, 'pengajuanKtp'])->name('admin-pengajuanKtp');
         Route::get('/showPengajuanKtp/{id}', [AdminController::class, 'showPengajuanKtp'])->name('admin-showPengajuanKtp');
         Route::post('/showPengajuanKtp/{id}', [AdminController::class, 'processPengajuanKtp'])->name('admin-processPengajuanKtp');
-
         // pengajuan kk
         Route::get('/pengajuanKk', [AdminController::class, 'pengajuanKk'])->name('admin-pengajuanKk');
-
+        Route::get('/showPengajuanKk/{id}', [AdminController::class, 'showPengajuanKk'])->name('admin-showPengajuanKk');
+        Route::get('/showAnggotaKeluarga/{id}/{id_kk}', [AdminController::class, 'showAnggotaKeluarga'])->name('admin-showAnggotaKeluarga');
+        Route::post('/showPengajuanKk/{id}', [AdminController::class, 'processPengajuanKk'])->name('admin-processPengajuanKk');
         // pengajuan akta kelahiran
         Route::get('/pengajuanAktaKelahiran', [AdminController::class, 'pengajuanAktaKelahiran'])->name('admin-pengajuanAktaKelahiran');
-
+        Route::get('/showPengajuanAktaKelahiran/{id}', [AdminController::class, 'showPengajuanAktaKelahiran'])->name('admin-showPengajuanAktaKelahiran');
+        Route::post('/showPengajuanAktaKelahiran/{id}', [AdminController::class, 'processPengajuanAktaKelahiran'])->name('admin-processPengajuanAktaKelahiran');
         // pengajuan akta kematian
         Route::get('/pengajuanAktaKematian', [AdminController::class, 'pengajuanAktaKematian'])->name('admin-pengajuanAktaKematian');
+        Route::get('/showPengajuanAktaKematian/{id}', [AdminController::class, 'showPengajuanAktaKematian'])->name('admin-showPengajuanAktaKematian');
+        Route::post('/showPengajuanAktaKematian/{id}', [AdminController::class, 'processPengajuanAktaKematian'])->name('admin-processPengajuanAktaKematian');
     });
 // masyarakat
 Route::prefix('penduduk')
