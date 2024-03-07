@@ -37,31 +37,43 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($penduduk as $p)
-                  <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $p->nik }}</td>
-                    <td>{{ $p->nama }}</td>
-                    <td>{{ $p->tmp_lahir }}, {{ $p->tgl_lahir }}</td>
-                    <td>{{ $p->jns_kelamin }}</td>
-                    <td>
-                      @if ($p->status_aktivasi == 1)
-                        <span class="badge bg-success">Aktif</span>
-                      @else
-                        <span class="badge bg-secondary">Belum Aktif</span>
-                      @endif
-                    </td>
-                    <td>
-                        <a href="{{ route('admin-showPenduduk', $p->id) }}" class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
-                        <a href="{{ route('admin-editPenduduk', $p->id) }}" class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
-                        <form action="{{ route('admin-destroyPenduduk', $p->id) }}" method="POST" class="d-inline">
-                          @method('delete')
-                          @csrf
-                          <button type="submit" class="btn btn-sm btn-danger" type="submit" onclick="return confirm('Apakah anda yakin?')"><i class="bx bxs-trash"></i></button>
-                        </form>
-                    </td>
-                  </tr>
-                  @endforeach --}}
+                                    @foreach ($pengajuanAkl as $p)
+                                        <tr>
+                                            <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
+                                            <td>{{ $p->nama_anak }}</td>
+                                            <td>{{ $p->anak_ke }}</td>
+                                            <td>{{ $p->jns_kelamin_anak }}</td>
+                                            <td>{{ $p->tmp_lahir_anak }},
+                                                {{ Carbon\Carbon::parse($p->tgl_lahir_anak)->format('d F Y') }}</td>
+                                            </td>
+                                            <td>
+                                                @if ($p->status == 0)
+                                                    <span class="badge bg-secondary">Diproses</span>
+                                                @elseif($p->status == 1)
+                                                    <span class="badge bg-success">Diterima</span>
+                                                @else
+                                                    <span class="badge bg-danger">Ditolak</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('pend-showPengajuanAkl', $p->id) }}"
+                                                    class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
+                                                @if ($p->status == 2)
+                                                    <a href="{{ route('pend-editPengajuanAkl', $p->id) }}"
+                                                        class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
+                                                @endif
+                                                <form action="{{ route('pend-destroyPengajuanAkl', $p->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-danger" type="submit"
+                                                        onclick="return confirm('Apakah anda yakin?')"><i
+                                                            class="bx bxs-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

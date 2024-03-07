@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AktaKelahiran;
 use App\Models\Ktp;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -185,8 +186,13 @@ class PendudukController extends Controller
     // pengajuan akta kelahiran
     public function pengajuanAktaKelahiran()
     {
+        $id_penduduk = auth()->user()->id_penduduk;
+        $pengajuanAkl = DB::table('akta_kelahiran')
+            ->where('id_penduduk', $id_penduduk)
+            ->get();
         return view('penduduk.pengajuanAktaKelahiran.index', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'pengajuanAkl' => $pengajuanAkl
         ]);
     }
 
@@ -214,10 +220,10 @@ class PendudukController extends Controller
             'dok_fc_kk' => 'required|file|max:1024',
             'dok_ktp_suami_istri' => 'required|file|max:1024',
             'dok_ktp_saksi' => 'required|file|max:1024',
-            'dok_fc_ijazah' => 'required|file|max:1024',
-            'dok_surat_ket_sekolah' => 'required|file|max:1024',
-            'dok_akta_anak_sebelumnya' => 'required|file|max:1024',
-            'dok_surat_ket_kematian' => 'required|file|max:1024',
+            'dok_fc_ijazah' => 'file|max:1024',
+            'dok_surat_ket_sekolah' => 'file|max:1024',
+            'dok_akta_anak_sebelumnya' => 'file|max:1024',
+            'dok_surat_ket_kematian' => 'file|max:1024',
         ]);
         $validatedData['id_penduduk'] = $id_penduduk;
         $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
@@ -226,15 +232,35 @@ class PendudukController extends Controller
         $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-aktaKelahiran');
         $validatedData['dok_ktp_suami_istri'] = $request->file('dok_ktp_suami_istri')->store('dokumen-pengajuan-aktaKelahiran');
         $validatedData['dok_ktp_saksi'] = $request->file('dok_ktp_saksi')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_fc_ijazah'] = $request->file('dok_fc_ijazah')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_surat_ket_sekolah'] = $request->file('dok_surat_ket_sekolah')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_akta_anak_sebelumnya'] = $request->file('dok_akta_anak_sebelumnya')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_surat_ket_kematian'] = $request->file('dok_surat_ket_kematian')->store('dokumen-pengajuan-aktaKelahiran');
+        // not required doc
+        if ($request->file('dok_fc_ijazah')) {
+            $validatedData['dok_fc_ijazah'] = $request->file('dok_fc_ijazah')->store('dokumen-pengajuan-aktaKelahiran');
+        }
+        if ($request->file('dok_surat_ket_sekolah')) {
+            $validatedData['dok_surat_ket_sekolah'] = $request->file('dok_surat_ket_sekolah')->store('dokumen-pengajuan-aktaKelahiran');
+        }
+        if ($request->file('dok_akta_anak_sebelumnya')) {
+            $validatedData['dok_akta_anak_sebelumnya'] = $request->file('dok_akta_anak_sebelumnya')->store('dokumen-pengajuan-aktaKelahiran');
+        }
+        if ($request->file('dok_surat_ket_kematian')) {
+            $validatedData['dok_surat_ket_kematian'] = $request->file('dok_surat_ket_kematian')->store('dokumen-pengajuan-aktaKelahiran');
+        }
         $validatedData['keterangan'] = $request->keterangan;
+        $validatedData['catatan'] = NULL;
         $validatedData['status'] = 0;
+        dd($validatedData);
+        AktaKelahiran::create($validatedData);
+        Alert::success('Berhasil!', 'Pengajuan Akta Kelahiran Baru telah ditambahkan');
+        return redirect()->route('pend-pengajuanAkl');
     }
 
     public function showPengajuanAktaKelahiran($id)
+    {
+    }
+    public function editPengajuanAktaKelahiran($id)
+    {
+    }
+    public function updatePengajuanAktaKelahiran(Request $request, $id)
     {
     }
     public function destroyPengajuanAktaKelahiran($id)
@@ -288,6 +314,12 @@ class PendudukController extends Controller
     }
 
     public function showPengajuanAktaKematian($id)
+    {
+    }
+    public function editPengajuanAktaKematian($id)
+    {
+    }
+    public function updatePengajuanAktaKematian(Request $request, $id)
     {
     }
     public function destroyPengajuanAktaKematian($id)

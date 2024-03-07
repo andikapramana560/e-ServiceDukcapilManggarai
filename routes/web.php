@@ -81,11 +81,15 @@ Route::prefix('penduduk')
         Route::get('/addPengajuanAktaKelahiran', [PendudukController::class, 'addPengajuanAktaKelahiran'])->name('pend-addPengajuanAkl');
         Route::post('/addPengajuanAktaKelahiran', [PendudukController::class, 'storePengajuanAktaKelahiran'])->name('pend-storePengajuanAkl');
         Route::get('/showPengajuanAktaKelahiran/{id}', [PendudukController::class, 'showPengajuanAktaKelahiran'])->name('pend-showPengajuanAkl');
+        Route::get('/editPengajuanAktaKelahiran/{id}', [PendudukController::class, 'editPengajuanAktaKelahiran'])->name('pend-editPengajuanAkl');
+        Route::post('/editPengajuanAktaKelahiran/{id}', [PendudukController::class, 'updatePengajuanAktaKelahiran'])->name('pend-updatePengajuanAkl');
         Route::delete('/destroyPengajuanAktaKelahiran/{id}', [PendudukController::class, 'destroyPengajuanAktaKelahiran'])->name('pend-destroyPengajuanAkl');
         // pengajuan akta kematian
         Route::get('/pengajuanAktaKematian', [PendudukController::class, 'pengajuanAktaKematian'])->name('pend-pengajuanAkm');
         Route::get('/addPengajuanAktaKematian', [PendudukController::class, 'addPengajuanAktaKematian'])->name('pend-addPengajuanAkm');
         Route::post('/addPengajuanAktaKematian', [PendudukController::class, 'storePengajuanAktaKematian'])->name('pend-storePengajuanAkm');
         Route::get('/showPengajuanAktaKematian/{id}', [PendudukController::class, 'showPengajuanAktaKematian'])->name('pend-showPengajuanAkm');
+        Route::get('/editPengajuanAktaKematian/{id}', [PendudukController::class, 'editPengajuanAktaKematian'])->name('pend-editPengajuanAkm');
+        Route::post('/editPengajuanAktaKematian/{id}', [PendudukController::class, 'updatePengajuanAktaKematian'])->name('pend-updatePengajuanAkm');
         Route::delete('/destroyPengajuanAktaKematian/{id}', [PendudukController::class, 'destroyPengajuanAktaKematian'])->name('pend-destroyPengajuanAkm');
     });
