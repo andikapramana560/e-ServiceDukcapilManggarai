@@ -27,7 +27,7 @@ return new class extends Migration
             $table->date('tgl_pernikahan_ak');
             $table->string('stts_hub_klrg_ak');
             $table->string('kewarganegaraan_ak');
-            $table->string('dok_imigrasi_ak');
+            $table->string('dok_imigrasi_ak')->nullable();
             $table->string('nama_ayah_ak');
             $table->string('nama_ibu_ak');
             $table->timestamps();

@@ -38,15 +38,16 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($pengajuanktp as $p)
+                                    @foreach ($pengajuanAkl as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $p->nama }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
-                                            <td>{{ $p->nama_pend }}</td>
-                                            <td>{{ $p->jns_kel_pend }}</td>
-                                            <td>{{ $p->tempat_lahir }},
-                                                {{ Carbon\Carbon::parse($p->tgl_lahir)->format('d F Y') }}</td>
+                                            <td>{{ $p->nama_anak }}</td>
+                                            <td>{{ $p->anak_ke }}</td>
+                                            <td>{{ $p->jns_kel_anak }}</td>
+                                            <td>{{ $p->tmp_lahir_anak }},
+                                                {{ Carbon\Carbon::parse($p->tgl_lahir_anak)->format('d F Y') }}</td>
                                             <td>
                                                 @if ($p->status == 0)
                                                     <span class="badge bg-secondary">Diproses</span>
@@ -57,11 +58,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin-showPengajuanKtp', $p->id) }}"
+                                                <a href="{{ route('admin-showPengajuanAktaKelahiran', $p->id) }}"
                                                     class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->

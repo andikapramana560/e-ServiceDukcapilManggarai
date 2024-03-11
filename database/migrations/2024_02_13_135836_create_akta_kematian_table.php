@@ -27,8 +27,8 @@ return new class extends Migration
             $table->string('dok_fc_kk');
             $table->string('dok_fc_ktp_saksi');
             $table->date('tgl_pengajuan');
-            $table->string('keterangan');
-            $table->string('catatan');
+            $table->string('keterangan')->nullable();
+            $table->string('catatan')->nullable();
             $table->string('status');
             $table->timestamps();
         });

@@ -68,7 +68,6 @@
         <section class="section">
             <div class="row">
                 <div class="col-lg-12">
-
                     <div class="card">
                         <div class="card-body pt-3">
                             <form class="needs-validation" method="POST" action="" enctype="multipart/form-data">
@@ -141,8 +140,8 @@
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Akta Pernikahan
                                                     Orang Tua</label>
-                                                <input type="file" name="dok_akta_pernikahan_ortu"
-                                                    class="form-control" id="yourPassword"
+                                                <input type="file" name="dok_fc_akta_nikah_ortu" class="form-control"
+                                                    id="yourPassword"
                                                     placeholder="Masukkan scan file surat keterangan lahir" required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
@@ -157,7 +156,7 @@
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
                                                     Penduduk Suami/Istri</label>
-                                                <input type="file" name="dok_ktp_suami_istri" class="form-control"
+                                                <input type="file" name="dok_fc_ktp_suami_istri" class="form-control"
                                                     id="yourPassword"
                                                     placeholder="Masukkan scan file surat keterangan lahir" required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
@@ -165,7 +164,7 @@
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
                                                     Penduduk Saksi</label>
-                                                <input type="file" name="dok_ktp_saksi" class="form-control"
+                                                <input type="file" name="dok_fc_ktp_saksi" class="form-control"
                                                     id="yourPassword"
                                                     placeholder="Masukkan scan file surat keterangan lahir" required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
@@ -188,8 +187,8 @@
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Akta Anak
                                                     Sebelumnya</label>
-                                                <input type="file" name="dok_akta_anak_sebelumnya"
-                                                    class="form-control" id="yourPassword"
+                                                <input type="file" name="dok_akta_anak_sblmnya" class="form-control"
+                                                    id="yourPassword"
                                                     placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
@@ -219,6 +218,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
     </main>
 @endsection

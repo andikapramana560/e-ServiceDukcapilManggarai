@@ -43,7 +43,7 @@
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
                                             <td>{{ $p->nama_anak }}</td>
                                             <td>{{ $p->anak_ke }}</td>
-                                            <td>{{ $p->jns_kelamin_anak }}</td>
+                                            <td>{{ $p->jns_kel_anak }}</td>
                                             <td>{{ $p->tmp_lahir_anak }},
                                                 {{ Carbon\Carbon::parse($p->tgl_lahir_anak)->format('d F Y') }}</td>
                                             </td>

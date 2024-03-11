@@ -27,7 +27,7 @@ return new class extends Migration
             $table->date('tgl_pernikahan_kk');
             $table->string('stts_hub_klrg_kk');
             $table->string('kewarganegaraan_kk');
-            $table->string('dok_imigrasi_kk');
+            $table->string('dok_imigrasi_kk')->nullable();
             $table->string('nama_ayah_kk');
             $table->string('nama_ibu_kk');
             $table->string('dok_ijin_tinggal');
@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('dok_fc_data_pendukung');
             $table->string('dok_surat_pernyataan');
             $table->date('tgl_pengajuan');
-            $table->string('keterangan');
-            $table->string('catatan');
+            $table->string('keterangan')->nullable();
+            $table->string('catatan')->nullable();
             $table->string('status');
             $table->timestamps();
         });
