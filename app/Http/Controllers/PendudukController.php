@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AktaKelahiran;
+use App\Models\AktaKematian;
 use App\Models\Ktp;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -271,50 +272,51 @@ class PendudukController extends Controller
     }
     public function updatePengajuanAktaKelahiran(Request $request, $id)
     {
-        $validatedData = $request->validate([
-            'nama_anak' => 'required',
-            'anak_ke' => 'required',
-            'jns_kel_anak' => 'required',
-            'tmp_lahir_anak' => 'required',
-            'tgl_lahir_anak' => 'required|date',
-            'nama_ayah' => 'required',
-            'nama_ibu' => 'required',
-            'dok_surat_ket_lahir' => 'required|file|max:1024',
-            'dok_fc_akta_nikah_ortu' => 'required|file|max:1024',
-            'dok_fc_kk' => 'required|file|max:1024',
-            'dok_fc_ktp_suami_istri' => 'required|file|max:1024',
-            'dok_fc_ktp_saksi' => 'required|file|max:1024',
-            'dok_fc_ijazah' => 'file|max:1024',
-            'dok_surat_ket_sekolah' => 'file|max:1024',
-            'dok_akta_anak_sebelumnya' => 'file|max:1024',
-            'dok_surat_ket_kematian' => 'file|max:1024',
-        ]);
-        $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
-        $validatedData['dok_surat_ket_lahir'] = $request->file('dok_surat_ket_lahir')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_fc_akta_nikah_ortu'] = $request->file('dok_fc_akta_nikah_ortu')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_fc_ktp_suami_istri'] = $request->file('dok_fc_ktp_suami_istri')->store('dokumen-pengajuan-aktaKelahiran');
-        $validatedData['dok_fc_ktp_saksi'] = $request->file('dok_fc_ktp_saksi')->store('dokumen-pengajuan-aktaKelahiran');
-        // not required doc
-        if ($request->file('dok_fc_ijazah')) {
-            $validatedData['dok_fc_ijazah'] = $request->file('dok_fc_ijazah')->store('dokumen-pengajuan-aktaKelahiran');
-        }
-        if ($request->file('dok_surat_ket_sekolah')) {
-            $validatedData['dok_surat_ket_sekolah'] = $request->file('dok_surat_ket_sekolah')->store('dokumen-pengajuan-aktaKelahiran');
-        }
-        if ($request->file('dok_akta_anak_sebelumnya')) {
-            $validatedData['dok_akta_anak_sebelumnya'] = $request->file('dok_akta_anak_sebelumnya')->store('dokumen-pengajuan-aktaKelahiran');
-        }
-        if ($request->file('dok_surat_ket_kematian')) {
-            $validatedData['dok_surat_ket_kematian'] = $request->file('dok_surat_ket_kematian')->store('dokumen-pengajuan-aktaKelahiran');
-        }
-        $validatedData['keterangan'] = $request->keterangan;
-        $validatedData['status'] = 0;
+        // not finished
+        // $validatedData = $request->validate([
+        //     'nama_anak' => 'required',
+        //     'anak_ke' => 'required',
+        //     'jns_kel_anak' => 'required',
+        //     'tmp_lahir_anak' => 'required',
+        //     'tgl_lahir_anak' => 'required|date',
+        //     'nama_ayah' => 'required',
+        //     'nama_ibu' => 'required',
+        //     'dok_surat_ket_lahir' => 'required|file|max:1024',
+        //     'dok_fc_akta_nikah_ortu' => 'required|file|max:1024',
+        //     'dok_fc_kk' => 'required|file|max:1024',
+        //     'dok_fc_ktp_suami_istri' => 'required|file|max:1024',
+        //     'dok_fc_ktp_saksi' => 'required|file|max:1024',
+        //     'dok_fc_ijazah' => 'file|max:1024',
+        //     'dok_surat_ket_sekolah' => 'file|max:1024',
+        //     'dok_akta_anak_sebelumnya' => 'file|max:1024',
+        //     'dok_surat_ket_kematian' => 'file|max:1024',
+        // ]);
+        // $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
+        // $validatedData['dok_surat_ket_lahir'] = $request->file('dok_surat_ket_lahir')->store('dokumen-pengajuan-aktaKelahiran');
+        // $validatedData['dok_fc_akta_nikah_ortu'] = $request->file('dok_fc_akta_nikah_ortu')->store('dokumen-pengajuan-aktaKelahiran');
+        // $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-aktaKelahiran');
+        // $validatedData['dok_fc_ktp_suami_istri'] = $request->file('dok_fc_ktp_suami_istri')->store('dokumen-pengajuan-aktaKelahiran');
+        // $validatedData['dok_fc_ktp_saksi'] = $request->file('dok_fc_ktp_saksi')->store('dokumen-pengajuan-aktaKelahiran');
+        // // not required doc
+        // if ($request->file('dok_fc_ijazah')) {
+        //     $validatedData['dok_fc_ijazah'] = $request->file('dok_fc_ijazah')->store('dokumen-pengajuan-aktaKelahiran');
+        // }
+        // if ($request->file('dok_surat_ket_sekolah')) {
+        //     $validatedData['dok_surat_ket_sekolah'] = $request->file('dok_surat_ket_sekolah')->store('dokumen-pengajuan-aktaKelahiran');
+        // }
+        // if ($request->file('dok_akta_anak_sebelumnya')) {
+        //     $validatedData['dok_akta_anak_sebelumnya'] = $request->file('dok_akta_anak_sebelumnya')->store('dokumen-pengajuan-aktaKelahiran');
+        // }
+        // if ($request->file('dok_surat_ket_kematian')) {
+        //     $validatedData['dok_surat_ket_kematian'] = $request->file('dok_surat_ket_kematian')->store('dokumen-pengajuan-aktaKelahiran');
+        // }
+        // $validatedData['keterangan'] = $request->keterangan;
+        // $validatedData['status'] = 0;
 
-        Ktp::where('id', $id)
-            ->update($validatedData);
-        Alert::success('Success', 'Pengajuan berhasil diupdate!');
-        return redirect()->route('pend-pengajuanKtp');
+        // Ktp::where('id', $id)
+        //     ->update($validatedData);
+        // Alert::success('Success', 'Pengajuan berhasil diupdate!');
+        // return redirect()->route('pend-pengajuanKtp');
     }
     public function destroyPengajuanAktaKelahiran($id)
     {
@@ -333,15 +335,18 @@ class PendudukController extends Controller
         AktaKelahiran::where('id', $id)->delete();
         Alert::success('Success', 'Pengajuan berhasil dihapus!');
         return redirect()->route('pend-pengajuanAkl');
-        // if ($pengajuanAkl[0]->dok_surat_ket_lahir !== NULL || $pengajuanAkl[0]->dok_fc_akta_nikah_ortu !== NULL || $pengajuanAkl[0]->dok_fc_kk !== NULL || $pengajuanAkl[0]->dok_fc_ktp_suami_istri !== NULL || $pengajuanAkl[0]->dok_fc_ktp_saksi !== NULL || $pengajuanAkl[0]->dok_fc_ijazah !== NULL || $pengajuanAkl[0]->dok_surat_ket_sekolah !== NULL || $pengajuanAkl[0]->dok_akta_anak_sblmnya !== NULL || $pengajuanAkl[0]->dok_surat_ket_kematian !== NULL) {
-        // }
     }
 
     // pengajuan akta kematian
     public function pengajuanAktaKematian()
     {
+        $id_penduduk = auth()->user()->id_penduduk;
+        $pengajuanAkm = DB::table('akta_kematian')
+            ->where('id_penduduk', $id_penduduk)
+            ->get();
         return view('penduduk.pengajuanAktaKematian.index', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'pengajuanAkm' => $pengajuanAkm
         ]);
     }
 
@@ -355,7 +360,7 @@ class PendudukController extends Controller
     public function storePengajuanAktaKematian(Request $request)
     {
         // get user id penduduk
-        $id_penduduk = auth()->user()->id;
+        $id_penduduk = auth()->user()->id_penduduk;
         $validatedData = $request->validate([
             'nama_alm_pend' => 'required',
             'jns_kel_alm' => 'required',
@@ -366,7 +371,7 @@ class PendudukController extends Controller
             'dok_akta_kel_suami_istri' => 'required|file|max:1024',
             'dok_fc_ktp_alm' => 'required|file|max:1024',
             'dok_fc_akta_kel_alm' => 'required|file|max:1024',
-            'dok_fc_ktp_ahli_warid' => 'required|file|max:1024',
+            'dok_fc_ktp_ahli_waris' => 'required|file|max:1024',
             'dok_fc_kk' => 'required|file|max:1024',
             'dok_fc_ktp_saksi' => 'required|file|max:1024',
         ]);
@@ -380,11 +385,20 @@ class PendudukController extends Controller
         $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-aktaKematian');
         $validatedData['dok_fc_ktp_saksi'] = $request->file('dok_fc_ktp_saksi')->store('dokumen-pengajuan-aktaKematian');
         $validatedData['keterangan'] = $request->keterangan;
+        $validatedData['catatan'] = NULL;
         $validatedData['status'] = 0;
+        AktaKematian::create($validatedData);
+        Alert::success('Berhasil!', 'Pengajuan Akta Kematian Baru telah ditambahkan');
+        return redirect()->route('pend-pengajuanAkm');
     }
 
     public function showPengajuanAktaKematian($id)
     {
+        $pengajuanAkm = DB::table('akta_kematian')->where('id', $id)->get();
+        return view('penduduk.pengajuanAktaKematian.show', [
+            'title' => 'Pengajuan',
+            'akm' => $pengajuanAkm
+        ]);
     }
     public function editPengajuanAktaKematian($id)
     {
@@ -394,5 +408,18 @@ class PendudukController extends Controller
     }
     public function destroyPengajuanAktaKematian($id)
     {
+        $pengajuanAkm = DB::table('akta_kematian')->where('id', $id)->get();
+        Storage::delete([
+            $pengajuanAkm[0]->dok_surat_ket_kematian,
+            $pengajuanAkm[0]->dok_akta_kel_suami_istri,
+            $pengajuanAkm[0]->dok_fc_ktp_alm,
+            $pengajuanAkm[0]->dok_fc_akta_kel_alm,
+            $pengajuanAkm[0]->dok_fc_ktp_ahli_waris,
+            $pengajuanAkm[0]->dok_fc_kk,
+            $pengajuanAkm[0]->dok_fc_ktp_saksi
+        ]);
+        AktaKematian::where('id', $id)->delete();
+        Alert::success('Success', 'Pengajuan berhasil dihapus!');
+        return redirect()->route('pend-pengajuanAkm');
     }
 }

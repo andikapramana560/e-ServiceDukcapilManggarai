@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layout.penduduk')
 
 @section('content')
     <main id="main" class="main">
@@ -7,69 +7,12 @@
             <h1>Detail Pengajuan Akta Kematian</h1>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('admin-dashboard') }}">Admin</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('admin-pengajuanAktaKematian') }}">Pengajuan</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('pend-dashboard') }}">Penduduk</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('pend-pengajuanAkm') }}">Pengajuan</a></li>
                     <li class="breadcrumb-item active">Detail Pengajuan</li>
                 </ol>
             </nav>
         </div><!-- End Page Title -->
-        <section class="section dashboard">
-            <div class="row">
-                <div class="col-6">
-                    <!-- Recent Activity -->
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Petunjuk Pemrosesan Pengajuan</h5>
-
-                            <div class="activity">
-
-                                <div class="activity-item d-flex">
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Periksa terlebih dahulu data yang sudah diajukan oleh penduduk
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Jika ingin melihat dokumen pendukung, klik tombol <b>Download File</b> pada form
-                                        dokumen
-                                        pendukung
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Anda dapat memproses pengajuan pada card bagian kanan, yang berjudul <b>Proses
-                                            Pengajuan</b>
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Anda dapat <b>menerima</b> atau <b>menolak</b> pengajuan pada form status pengajuan,
-                                        kemudian
-                                        berikan catatan jika ada
-                                    </div>
-                                </div><!-- End activity item-->
-
-                                <div class="activity-item d-flex">
-                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                                    <div class="activity-content">
-                                        Klik tombol <b>submit</b> jika sudah selesai memproses
-                                    </div>
-                                </div><!-- End activity item-->
-
-                            </div>
-
-                        </div>
-                    </div><!-- End Recent Activity -->
-                </div>
-            </div>
-        </section>
         <section class="section">
             <div class="row">
                 <div class="col-lg-7">
@@ -181,38 +124,32 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="card">
-                        @if ($akm[0]->status != 1)
+                        @if ($akm[0]->status != 0)
                             <div class="card-body">
                                 <h5 class="card-title">Proses Pengajuan</h5>
-                                <form class="needs-validation" method="POST" action="">
-                                    @csrf
-                                    <div class="tab-content">
-                                        <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
-                                            <div class="row g-3">
-                                                <div class="col-6">
-                                                    <label for="yourPassword" class="form-label">Status Pengajuan</label>
-                                                    <select class="form-select" id="validationCustom04" name="status"
-                                                        required>
-                                                        <option selected disabled value="">Pilih...</option>
-                                                        <option value="1">Diterima</option>
-                                                        <option value="2">Ditolak</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-12">
-                                                    <label for="yourPassword" class="form-label">Catatan</label>
-                                                    <textarea name="catatan" id="" cols="30" rows="4" class="form-control"
-                                                        placeholder="Kosongkan jika tidak ada catatan"></textarea>
-                                                    <div class="invalid-feedback">Please enter your password!</div>
-                                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
+                                        <div class="row g-3">
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Status Pengajuan</label>
+                                                <select class="form-select" id="validationCustom04" name="status"
+                                                    disabled>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="1"
+                                                        @if ($akm[0]->status == 1) selected @endif>Diterima
+                                                    </option>
+                                                    <option value="2"
+                                                        @if ($akm[0]->status == 2) selected @endif>Ditolak</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-12">
+                                                <label for="yourPassword" class="form-label">Catatan</label>
+                                                <textarea name="catatan" id="" cols="30" rows="4" class="form-control" disabled>{{ $akm[0]->catatan }}</textarea>
+                                                <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                         </div>
-                                    </div><!-- End Bordered Tabs -->
-                                    {{-- button submit here --}}
-                                    <div class="col-12 mt-3">
-                                        <button class="btn btn-primary" type="submit">Submit</button>
                                     </div>
-                                    {{-- form end here --}}
-                                </form>
+                                </div><!-- End Bordered Tabs -->
                             </div>
                         @else
                         @endif

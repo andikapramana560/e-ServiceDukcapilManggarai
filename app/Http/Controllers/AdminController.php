@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\AktaKelahiran;
+use App\Models\AktaKematian;
 use App\Models\Ktp;
 use App\Models\Penduduk;
 use App\Models\User;
@@ -208,15 +209,34 @@ class AdminController extends Controller
     // pengajuan Akta Kematian
     public function pengajuanAktaKematian()
     {
+        $pengajuanAkm = DB::table('akta_kematian')
+            ->join('penduduk', 'akta_kematian.id_penduduk', 'penduduk.id')
+            ->select('akta_kematian.*', 'penduduk.nama')
+            ->get();
         return view('admin.pengajuanAktaKematian.index', [
             'title' => 'Pengajuan',
+            'pengajuanAkm' => $pengajuanAkm
         ]);
     }
-    public function showPengajuanAktaKematian()
+    public function showPengajuanAktaKematian($id)
     {
+        $pengajuanAkm = DB::table('akta_kematian')
+            ->join('penduduk', 'akta_kematian.id_penduduk', 'penduduk.id')
+            ->select('akta_kematian.*', 'penduduk.nama')
+            ->where('akta_kematian.id', $id)
+            ->get();
+        return view('admin.pengajuanAktaKematian.show', [
+            'title' => 'Pengajuan',
+            'akm' => $pengajuanAkm
+        ]);
     }
-    public function processPengajuanAktaKematian()
+    public function processPengajuanAktaKematian($id, Request $request)
     {
+        $validatedData['status'] = $request->status;
+        $validatedData['catatan'] = $request->catatan;
+        AktaKematian::where('id', $id)->update($validatedData);
+        Alert::success('Success', 'Pengajuan Akta Kematian telah diproses!');
+        return redirect()->route('admin-pengajuanAktaKematian');
     }
     // end pengajuan Akta Kematian
 

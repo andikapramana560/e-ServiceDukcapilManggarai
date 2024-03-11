@@ -37,15 +37,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @foreach ($pengajuanktp as $p)
+                                    @foreach ($pengajuanAkm as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
                                             <td>{{ $p->nama }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
-                                            <td>{{ $p->nama_pend }}</td>
-                                            <td>{{ $p->jns_kel_pend }}</td>
-                                            <td>{{ $p->tempat_lahir }},
-                                                {{ Carbon\Carbon::parse($p->tgl_lahir)->format('d F Y') }}</td>
+                                            <td>{{ $p->nama_alm_pend }}</td>
+                                            <td>{{ $p->jns_kel_alm }}</td>
+                                            <td>
+                                                {{ Carbon\Carbon::parse($p->tgl_meninggal)->format('d F Y') }}</td>
                                             <td>
                                                 @if ($p->status == 0)
                                                     <span class="badge bg-secondary">Diproses</span>
@@ -56,11 +56,11 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                <a href="{{ route('admin-showPengajuanKtp', $p->id) }}"
+                                                <a href="{{ route('admin-showPengajuanAktaKematian', $p->id) }}"
                                                     class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
                                             </td>
                                         </tr>
-                                    @endforeach --}}
+                                    @endforeach
                                 </tbody>
                             </table>
                             <!-- End Table with stripped rows -->
