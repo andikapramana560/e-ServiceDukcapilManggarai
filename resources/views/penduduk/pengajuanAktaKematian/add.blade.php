@@ -13,6 +13,55 @@
                 </ol>
             </nav>
         </div><!-- End Page Title -->
+        <section class="section dashboard">
+            <div class="row">
+                <div class="col-6">
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Petunjuk Pengisian Form</h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Pada form yang berisikan input file / dokumen, anda dapat meng-scan dahulu dokumen
+                                        yang asli menjadi dokumen berformat pdf
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        File yang diupload maksimal berukuran 1 Mb
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Semua Dokumen pendukung <b>Wajib</b> diisi
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Form keterangan dapat diisi jika ada keterangan tambahan mengenai pengajuan
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                    </div>
+                                </div><!-- End activity item-->
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+                </div>
+            </div>
+        </section>
 
         <section class="section">
             <div class="row">
@@ -76,8 +125,8 @@
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Surat Akta
                                                     Kelahiran Suami/Istri</label>
-                                                <input type="file" name="dok_akta_kel_suami_istri" class="form-control"
-                                                    id="yourPassword" required>
+                                                <input type="file" name="dok_akta_kel_suami_istri"
+                                                    class="form-control" id="yourPassword" required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 

@@ -153,35 +153,47 @@
                 </div>
                 <div class="col-lg-5">
                     <div class="card">
-                        @if ($akl[0]->status != 0)
-                            <div class="card-body">
-                                <h5 class="card-title">Proses Pengajuan</h5>
-                                <div class="tab-content">
-                                    <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
-                                        <div class="row g-3">
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Status Pengajuan</label>
-                                                <select class="form-select" id="validationCustom04" name="status"
-                                                    disabled>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="1"
-                                                        @if ($akl[0]->status == 1) selected @endif>Diterima
-                                                    </option>
-                                                    <option value="2"
-                                                        @if ($akl[0]->status == 2) selected @endif>Ditolak</option>
-                                                </select>
-                                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Proses Pengajuan</h5>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
+                                    <div class="row g-3">
+                                        <div class="col-6">
+                                            <label for="yourPassword" class="form-label">Status Pengajuan</label>
+                                            <select class="form-select" id="validationCustom04" name="status" disabled>
+                                                <option selected disabled value="">Pilih...</option>
+                                                <option value="0" @if ($akl[0]->status == 0) selected @endif>
+                                                    Diproses
+                                                </option>
+                                                <option value="1" @if ($akl[0]->status == 1) selected @endif>
+                                                    Diterima
+                                                </option>
+                                                <option value="2" @if ($akl[0]->status == 2) selected @endif>
+                                                    Ditolak</option>
+                                            </select>
+                                        </div>
+                                        @if ($akl[0]->status == 2)
                                             <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Catatan</label>
                                                 <textarea name="catatan" id="" cols="30" rows="4" class="form-control" disabled>{{ $akl[0]->catatan }}</textarea>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
-                                        </div>
+                                            <div class="col-12 mt-3">
+                                                <a href="{{ route('pend-editPengajuanAkl', $akl[0]->id) }}"
+                                                    class="btn btn-primary">Update Pengajuan</a>
+                                            </div>
+                                        @elseif($akl[0]->status == 1)
+                                            <div class="col-12">
+                                                <label for="yourPassword" class="form-label">Catatan</label>
+                                                <textarea name="catatan" id="" cols="30" rows="4" class="form-control" disabled>{{ $akl[0]->catatan }}</textarea>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                        @else
+                                        @endif
                                     </div>
-                                </div><!-- End Bordered Tabs -->
-                            </div>
-                        @else
-                        @endif
+                                </div>
+                            </div><!-- End Bordered Tabs -->
+                        </div>
                     </div>
                 </div>
         </section>

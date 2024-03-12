@@ -4,11 +4,11 @@
     <main id="main" class="main">
 
         <div class="pagetitle">
-            <h1>Edit Pengajuan KTP</h1>
+            <h1>Edit Pengajuan Akta Kelahiran</h1>
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('pend-dashboard') }}">Penduduk</a></li>
-                    <li class="breadcrumb-item"><a href="{{ route('pend-pengajuanKtp') }}">Pengajuan</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('pend-pengajuanAkl') }}">Pengajuan</a></li>
                     <li class="breadcrumb-item active">Update Pengajuan</li>
                 </ol>
             </nav>
@@ -18,151 +18,164 @@
                 <div class="col-lg-12">
 
                     <div class="card">
-                        <div class="card-body pt-3">
-                            <div class="tab-content pt-3">
-                                <form action="" method="post" enctype="multipart/form-data">
+                        <div class="card-body">
+                            <div class="tab-content">
+                                <form class="needs-validation" method="POST" action="" enctype="multipart/form-data">
                                     @csrf
-                                    <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
-                                        <div class="row g-3">
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Nama</label>
-                                                <input type="text" name="nama_pend" class="form-control"
-                                                    id="yourPassword" value="{{ old('nama_pend', $ktp[0]->nama_pend) }}"
-                                                    required>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="validationCustom04" class="form-label">Jenis Kelamin</label>
-                                                <select class="form-select" name="jns_kel_pend" required>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="Laki-Laki"
-                                                        @if ($ktp[0]->jns_kel_pend === 'Laki-Laki') selected @endif>
-                                                        Laki-Laki</option>
-                                                    <option value="Perempuan"
-                                                        @if ($ktp[0]->jns_kel_pend === 'Perempuan') selected @endif>
-                                                        Perempuan</option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    Gender/jenis Kelamin harus dipilih!
+                                    <div class="tab-content pt-3">
+                                        <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
+                                            <div class="row g-3">
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Nama Anak</label>
+                                                    <input type="text" name="nama_anak" class="form-control"
+                                                        id="yourPassword" value="{{ old('nama_anak', $akl[0]->nama_anak) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Tempat Lahir</label>
-                                                <input type="text" name="tempat_lahir" class="form-control"
-                                                    id="yourPassword"
-                                                    value="{{ old('tempat_lahir', $ktp[0]->tempat_lahir) }}" required>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
 
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Tanggal Lahir</label>
-                                                <input type="date" name="tgl_lahir" class="form-control"
-                                                    id="yourPassword" value="{{ old('tgl_lahir', $ktp[0]->tgl_lahir) }}"
-                                                    required>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Anak Ke-</label>
+                                                    <input type="text" name="anak_ke" class="form-control"
+                                                        id="yourPassword" value="{{ old('anak_ke', $akl[0]->anak_ke) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
 
-                                            <div class="col-12">
-                                                <label for="yourPassword" class="form-label">Alamat</label>
-                                                <textarea name="alamat" id="" cols="30" rows="4" class="form-control">{{ $ktp[0]->alamat }}</textarea>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="validationCustom04" class="form-label">Agama</label>
-                                                <select class="form-select" id="validationCustom04" name="agama" required>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="Hindu"
-                                                        @if ($ktp[0]->agama === 'Hindu') selected @endif>
-                                                        Hindu</option>
-                                                    <option value="Islam"
-                                                        @if ($ktp[0]->agama === 'Islam') selected @endif>
-                                                        Islam</option>
-                                                    <option value="Kristen Protestan"
-                                                        @if ($ktp[0]->agama === 'Kristen Protestan') selected @endif>Kristen Protestan
-                                                    </option>
-                                                    <option value="Kristen Katolik"
-                                                        @if ($ktp[0]->agama === 'Kristen Katolik') selected @endif>Kristen Katolik
-                                                    </option>
-                                                    <option value="Budha"
-                                                        @if ($ktp[0]->agama === 'Budha') selected @endif>
-                                                        Budha</option>
-                                                    <option value="Kong Hu Chu"
-                                                        @if ($ktp[0]->agama === 'Kong Hu Chu') selected @endif>Kong Hu Chu
-                                                    </option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    Pilih Agama anda!
+                                                <div class="col-6">
+                                                    <label for="validationCustom04" class="form-label">Jenis Kelamin</label>
+                                                    <select class="form-select" name="jns_kel_anak" required>
+                                                        <option selected disabled value="">Pilih...</option>
+                                                        <option value="Laki-Laki"
+                                                            @if ($akl[0]->jns_kel_anak === 'Laki-Laki') selected @endif>
+                                                            Laki-Laki</option>
+                                                        <option value="Perempuan"
+                                                            @if ($akl[0]->jns_kel_anak === 'Perempuan') selected @endif>
+                                                            Perempuan</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Gender/jenis Kelamin harus dipilih!
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="validationCustom04" class="form-label">Status
-                                                    Pernikahan</label>
-                                                <select class="form-select @error('status_pernikahan') is-invalid @enderror"
-                                                    id="validationCustom04" name="status_pernikahan" required>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="Sudah Menikah"
-                                                        @if ($ktp[0]->status_pernikahan === 'Sudah Menikah') selected @endif>Sudah Menikah
-                                                    </option>
-                                                    <option value="Belum Menikah"
-                                                        @if ($ktp[0]->status_pernikahan === 'Belum Menikah') selected @endif>Belum Menikah
-                                                    </option>
-                                                </select>
-                                                <div class="invalid-feedback">
-                                                    Status pernikahan harus dipilih!
+
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Tempat Lahir Anak</label>
+                                                    <input type="text" name="tmp_lahir_anak" class="form-control"
+                                                        id="yourPassword"
+                                                        value="{{ old('tmp_lahir_anak', $akl[0]->tmp_lahir_anak) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
                                                 </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Pekerjaan</label>
-                                                <select class="form-select @error('pekerjaan') is-invalid @enderror"
-                                                    id="validationCustom04" name="pekerjaan" required>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="Pelajar/Mahasiswa"
-                                                        @if ($ktp[0]->pekerjaan === 'Pelajar/Mahasiswa') selected @endif>
-                                                        Pelajar/Mahasiswa
-                                                    </option>
-                                                    <option value="PNS"
-                                                        @if ($ktp[0]->pekerjaan === 'PNS') selected @endif>
-                                                        PNS</option>
-                                                    <option value="Pegawai Swasta"
-                                                        @if ($ktp[0]->pekerjaan === 'Pegawai Swasta') selected @endif>Pegawai Swasta
-                                                    </option>
-                                                    <option value="Wiraswasta"
-                                                        @if ($ktp[0]->pekerjaan === 'Wiraswasta') selected @endif>Wiraswasta
-                                                    </option>
-                                                </select>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Kewarganegaraan</label>
-                                                <input type="text" name="kewarganegaraan" class="form-control"
-                                                    id="yourPassword"
-                                                    value="{{ old('kewarganegaraan', $ktp[0]->kewarganegaraan) }}"
-                                                    required>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-12">
-                                                <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
-                                                    rel="noopener noreferrer" class="btn btn-secondary">File Dokumen
-                                                    KK</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="yourPassword" class="form-label">Dokumen Kartu
-                                                    Keluarga</label>
-                                                <input type="file" name="dok_fc_kk" class="form-control"
-                                                    id="yourPassword">
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="yourPassword" class="form-label">Keterangan</label>
-                                                <textarea name="keterangan" id="" cols="30" rows="4" class="form-control"
-                                                    placeholder="Kosongkan jika tidak ada keterangan"></textarea>
-                                                <div class="invalid-feedback">Please enter your password!</div>
+
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Tanggal Lahir Anak</label>
+                                                    <input type="date" name="tgl_lahir_anak" class="form-control"
+                                                        id="yourPassword"
+                                                        value="{{ old('tgl_lahir_anak', $akl[0]->tgl_lahir_anak) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Nama Ayah</label>
+                                                    <input type="text" name="nama_ayah" class="form-control"
+                                                        id="yourPassword" value="{{ old('nama_ayah', $akl[0]->nama_ayah) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Nama Ibu</label>
+                                                    <input type="text" name="nama_ibu" class="form-control"
+                                                        id="yourPassword" value="{{ old('nama_ibu', $akl[0]->nama_ibu) }}"
+                                                        required>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
+                                                        Lahir</label>
+                                                    <input type="file" name="dok_surat_ket_lahir" class="form-control"
+                                                        id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Akta Pernikahan
+                                                        Orang Tua</label>
+                                                    <input type="file" name="dok_fc_akta_nikah_ortu"
+                                                        class="form-control" id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label>
+                                                    <input type="file" name="dok_fc_kk" class="form-control"
+                                                        id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                        Penduduk Suami/Istri</label>
+                                                    <input type="file" name="dok_fc_ktp_suami_istri"
+                                                        class="form-control" id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                        Penduduk Saksi</label>
+                                                    <input type="file" name="dok_fc_ktp_saksi" class="form-control"
+                                                        id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Ijazah</label>
+                                                    <input type="file" name="dok_fc_ijazah" class="form-control"
+                                                        id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
+                                                        Sekolah</label>
+                                                    <input type="file" name="dok_surat_ket_sekolah"
+                                                        class="form-control" id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Akta Anak
+                                                        Sebelumnya</label>
+                                                    <input type="file" name="dok_akta_anak_sblmnya"
+                                                        class="form-control" id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
+                                                        Kematian</label>
+                                                    <input type="file" name="dok_surat_ket_kematian"
+                                                        class="form-control" id="yourPassword"
+                                                        placeholder="Masukkan scan file surat keterangan lahir">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <label for="yourPassword" class="form-label">Keterangan</label>
+                                                    <textarea name="keterangan" id="" cols="30" rows="4" class="form-control"
+                                                        placeholder="Kosongkan jika tidak ada keterangan"></textarea>
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div><!-- End Bordered Tabs -->
+                                    {{-- button submit here --}}
                                     <div class="col-12 mt-3">
                                         <button class="btn btn-primary" type="submit">Update</button>
                                     </div>
+                                    {{-- form end here --}}
                                 </form>
                             </div><!-- End Bordered Tabs -->
                         </div>

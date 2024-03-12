@@ -18,8 +18,8 @@
                 <div class="col-lg-12">
 
                     <div class="card">
-                        <div class="card-body pt-3">
-                            <div class="tab-content pt-3">
+                        <div class="card-body">
+                            <div class="tab-content">
                                 <form action="" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
