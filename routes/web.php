@@ -41,8 +41,13 @@ Route::prefix('admin')
         Route::delete('/destroyPenduduk/{id}', [AdminController::class, 'destroyPenduduk'])->name('admin-destroyPenduduk');
         // pengajuan ktp
         Route::get('/pengajuanKtp', [AdminController::class, 'pengajuanKtp'])->name('admin-pengajuanKtp');
+        Route::get('/addPengajuanKtp', [AdminController::class, 'addPengajuanKtp'])->name('admin-addPengajuanKtp');
+        Route::post('/addPengajuanKtp', [AdminController::class, 'storePengajuanKtp'])->name('admin-storePengajuanKtp');
         Route::get('/showPengajuanKtp/{id}', [AdminController::class, 'showPengajuanKtp'])->name('admin-showPengajuanKtp');
+        Route::get('/editPengajuanKtp/{id}', [AdminController::class, 'editPengajuanKtp'])->name('admin-editPengajuanKtp');
+        Route::post('/editPengajuanKtp/{id}', [AdminController::class, 'updatePengajuanKtp'])->name('admin-updatePengajuanKtp');
         Route::post('/showPengajuanKtp/{id}', [AdminController::class, 'processPengajuanKtp'])->name('admin-processPengajuanKtp');
+        Route::delete('/destroyPengajuanKtp/{id}', [AdminController::class, 'destroyPengajuanKtp'])->name('admin-destroyPengajuanKtp');
         // pengajuan kk
         Route::get('/pengajuanKk', [AdminController::class, 'pengajuanKk'])->name('admin-pengajuanKk');
         Route::get('/showPengajuanKk/{id}', [AdminController::class, 'showPengajuanKk'])->name('admin-showPengajuanKk');
