@@ -55,11 +55,20 @@ Route::prefix('admin')
         Route::post('/showPengajuanKk/{id}', [AdminController::class, 'processPengajuanKk'])->name('admin-processPengajuanKk');
         // pengajuan akta kelahiran
         Route::get('/pengajuanAktaKelahiran', [AdminController::class, 'pengajuanAktaKelahiran'])->name('admin-pengajuanAktaKelahiran');
+        Route::get('/addPengajuanAktaKelahiran', [AdminController::class, 'addPengajuanAktaKelahiran'])->name('admin-addPengajuanAktaKelahiran');
+        Route::post('/addPengajuanAktaKelahiran', [AdminController::class, 'storePengajuanAktaKelahiran'])->name('admin-storePengajuanAktaKelahiran');
         Route::get('/showPengajuanAktaKelahiran/{id}', [AdminController::class, 'showPengajuanAktaKelahiran'])->name('admin-showPengajuanAktaKelahiran');
         Route::post('/showPengajuanAktaKelahiran/{id}', [AdminController::class, 'processPengajuanAktaKelahiran'])->name('admin-processPengajuanAktaKelahiran');
+        Route::get('/editPengajuanAktaKelahiran/{id}', [AdminController::class, 'editPengajuanAktaKelahiran'])->name('admin-editPengajuanAktaKelahiran');
+        Route::post('/editPengajuanAktaKelahiran/{id}', [AdminController::class, 'updatePengajuanAktaKelahiran'])->name('admin-updatePengajuanAktaKelahiran');
+        Route::delete('/destroyPengajuanAktaKelahiran/{id}', [AdminController::class, 'destroyPengajuanAktaKelahiran'])->name('admin-destroyPengajuanAktaKelahiran');
         // pengajuan akta kematian
         Route::get('/pengajuanAktaKematian', [AdminController::class, 'pengajuanAktaKematian'])->name('admin-pengajuanAktaKematian');
+        Route::get('/addPengajuanAktaKematian', [AdminController::class, 'addPengajuanAktaKematian'])->name('admin-addPengajuanAktaKematian');
+        Route::post('/addPengajuanAktaKematian', [AdminController::class, 'storePengajuanAktaKematian'])->name('admin-storePengajuanAktaKematian');
         Route::get('/showPengajuanAktaKematian/{id}', [AdminController::class, 'showPengajuanAktaKematian'])->name('admin-showPengajuanAktaKematian');
+        Route::get('/editPengajuanAktaKematian/{id}', [AdminController::class, 'editPengajuanAktaKematian'])->name('admin-editPengajuanAktaKematian');
+        Route::post('/editPengajuanAktaKematian/{id}', [AdminController::class, 'updatePengajuanAktaKematian'])->name('admin-updatePengajuanAktaKematian');
         Route::post('/showPengajuanAktaKematian/{id}', [AdminController::class, 'processPengajuanAktaKematian'])->name('admin-processPengajuanAktaKematian');
     });
 // masyarakat

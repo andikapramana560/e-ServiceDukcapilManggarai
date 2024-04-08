@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kartu_tanda_penduduk', function (Blueprint $table) {
             $table->id();
             $table->char('id_penduduk', 16);
+            $table->string('jns_pengajuan');
             $table->string('nama_pend');
             $table->string('jns_kel_pend');
             $table->string('tempat_lahir');
@@ -24,7 +25,18 @@ return new class extends Migration
             $table->string('status_pernikahan');
             $table->string('pekerjaan');
             $table->string('kewarganegaraan');
-            $table->string('dok_fc_kk');
+            // pengajuan 1
+            $table->string('dok_fc_kk')->nullable();
+            // pengajuan 2
+            $table->string('dok_fc_kk2')->nullable();
+            $table->string('dok_srt_ket_hilang')->nullable();
+            $table->string('dok_ktp_rusak')->nullable();
+            // pengajuan 3
+            $table->string('dok_fc_kk3')->nullable();
+            $table->string('dok_ktp')->nullable();
+            // pengajuan 4
+            $table->string('dok_fc_kk4')->nullable();
+            $table->string('dok_ktp2')->nullable();
             $table->date('tgl_pengajuan');
             $table->string('keterangan')->nullable();
             $table->string('catatan')->nullable();

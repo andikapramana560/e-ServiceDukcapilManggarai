@@ -21,15 +21,29 @@ return new class extends Migration
             $table->date('tgl_lahir_anak');
             $table->string('nama_ayah');
             $table->string('nama_ibu');
-            $table->string('dok_surat_ket_lahir');
-            $table->string('dok_fc_akta_nikah_ortu');
-            $table->string('dok_fc_kk');
-            $table->string('dok_fc_ktp_suami_istri');
-            $table->string('dok_fc_ktp_saksi');
+            $table->string('jns_pengajuan');
+            // pengajuan 1
+            $table->string('dok_surat_ket_lahir')->nullable();
+            $table->string('dok_fc_akta_nikah_ortu')->nullable();
+            $table->string('dok_fc_kk')->nullable();
+            $table->string('dok_fc_ktp_suami_istri')->nullable();
+            $table->string('dok_fc_ktp_saksi')->nullable();
             $table->string('dok_fc_ijazah')->nullable();
             $table->string('dok_surat_ket_sekolah')->nullable();
             $table->string('dok_akta_anak_sblmnya')->nullable();
             $table->string('dok_surat_ket_kematian')->nullable();
+            // pengajuan 2
+            $table->string('dok_surat_ket_hilang')->nullable();
+            $table->string('dok_fc_akta_hilang')->nullable();
+            $table->string('dok_fc_kk_terbaru')->nullable();
+            $table->string('dok_fc_ktp_suami_istri2')->nullable();
+            $table->string('dok_fc_ktp_saksi2')->nullable();
+            // pengajuan 3
+            $table->string('dok_akta_asli')->nullable();
+            $table->string('dok_ktp')->nullable();
+            $table->string('dok_kk2')->nullable();
+            $table->string('dok_ijazah')->nullable();
+            $table->string('dok_fc_ktp_saksi3')->nullable();
             $table->date('tgl_pengajuan');
             $table->string('keterangan')->nullable();
             $table->string('catatan')->nullable();

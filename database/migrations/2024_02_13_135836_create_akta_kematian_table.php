@@ -19,13 +19,22 @@ return new class extends Migration
             $table->string('tmp_lahir_alm');
             $table->date('tgl_lahir_alm');
             $table->date('tgl_meninggal');
-            $table->string('dok_surat_ket_kematian');
-            $table->string('dok_akta_kel_suami_istri');
-            $table->string('dok_fc_ktp_alm');
-            $table->string('dok_fc_akta_kel_alm');
-            $table->string('dok_fc_ktp_ahli_waris');
-            $table->string('dok_fc_kk');
-            $table->string('dok_fc_ktp_saksi');
+            $table->string('jns_pengajuan');
+            // pengajuan 1
+            $table->string('dok_surat_ket_kematian')->nullable();
+            $table->string('dok_akta_kel_suami_istri')->nullable();
+            $table->string('dok_fc_ktp_alm')->nullable();
+            $table->string('dok_fc_akta_kel_alm')->nullable();
+            $table->string('dok_fc_ktp_ahli_waris')->nullable();
+            $table->string('dok_fc_kk')->nullable();
+            $table->string('dok_fc_ktp_saksi')->nullable();
+            // pengajuan 2
+            $table->string('dok_surat_ket_hilang')->nullable();
+            $table->string('dok_fc_akta_hilang')->nullable();
+            $table->string('dok_fc_ktp_alm2')->nullable();
+            $table->string('dok_fc_ktp_saksi2')->nullable();
+            $table->string('dok_fc_kk2')->nullable();
+
             $table->date('tgl_pengajuan');
             $table->string('keterangan')->nullable();
             $table->string('catatan')->nullable();
