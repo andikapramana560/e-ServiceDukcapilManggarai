@@ -154,8 +154,10 @@ class AdminController extends Controller
     public function addPengajuanktp()
     {
         // tabel penduduk untuk pilih penduduk yg mengajukan
+        $penduduk = DB::table('penduduk')->get();
         return view('admin.pengajuanKtp.add', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'penduduk' => $penduduk
         ]);
     }
 
@@ -294,6 +296,7 @@ class AdminController extends Controller
     // pengajuan Akta Kelahiran
     public function pengajuanAktaKelahiran()
     {
+
         $pengajuanAkl = DB::table('akta_kelahiran')
             ->join('penduduk', 'akta_kelahiran.id_penduduk', 'penduduk.id')
             ->select('akta_kelahiran.*', 'penduduk.nama')
@@ -305,8 +308,10 @@ class AdminController extends Controller
     }
     public function addPengajuanAktaKelahiran()
     {
+        $penduduk = DB::table('penduduk')->get();
         return view('admin.pengajuanAktaKelahiran.add', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'penduduk' => $penduduk
         ]);
     }
 
@@ -536,8 +541,10 @@ class AdminController extends Controller
     }
     public function addPengajuanAktaKematian()
     {
+        $penduduk = DB::table('penduduk')->get();
         return view('admin.pengajuanAktaKematian.add', [
-            'title' => 'Pengajuan'
+            'title' => 'Pengajuan',
+            'penduduk' => $penduduk
         ]);
     }
 

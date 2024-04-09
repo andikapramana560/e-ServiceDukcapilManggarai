@@ -72,28 +72,39 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika anda memilih pengajuan Penerbitan Akta Kelahiran Baru, anda hanya perlu
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kelahiran Baru</b>, anda hanya perlu
                                         melengkapi data
                                         pada
-                                        Dokumen Pengajuan Penerbitan Akta Kelahiran Baru
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kelahiran Baru</b>, yaitu <b>Surat Keterangan
+                                            Lahir dari Rumah Sakit</b>, <b>Dokumen Akta Pernikahan Orang Tua</b>, <b>Dokumen
+                                            Kartu Keluarga</b>, <b>Dokumen Kartu Tanda Penduduk Suami dan Istri</b>,
+                                        <b>Dokumen Kartu Tanda Penduduk 2 orang Saksi</b>, <b>Dokumen Ijazah SD s/d terakhir
+                                            yang dimiliki</b>, <b>Dokumen Akta Anak Sebelumnya</b>, dan <b>Dokumen Surat
+                                            Keterangan Kematian</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika anda memilih pengajuan Penerbitan Akta Kelahiran Hilang/Rusak, anda hanya perlu
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kelahiran Hilang/Rusak</b>, anda
+                                        hanya perlu
                                         melengkapi
                                         data pada
-                                        Dokumen Pengajuan Penerbitan Akta Kelahiran Hilang/Rusak
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kelahiran Hilang/Rusak</b>, yaitu <b>Surat
+                                            Keterangan Hilang dari Kepolisian</b>, <b>Dokumen Akta yang Hilang</b>,
+                                        <b>Dokumen Kartu Keluarga</b>, <b>Dokumen KTP suami/istri</b> dan <b>Dokumen KTP 2
+                                            orang Saksi</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika anda memilih pengajuan Perubahan Data Akta Kelahiran, anda hanya perlu
+                                        Jika anda memilih pengajuan <b>Perubahan Data Akta Kelahiran</b>, anda hanya perlu
                                         melengkapi data
                                         pada
-                                        Dokumen Pengajuan Perubahan Data Akta Kelahiran
+                                        Dokumen Pengajuan <b>Perubahan Data Akta Kelahiran</b>, yaitu <b>Dokumen Akta
+                                            Kelahiran</b>, <b>Dokumen KTP</b>, <b>Dokumen Kartu Keluarga</b>, <b>Dokumen
+                                            Ijazah</b>, dan <b>Dokumen KTP 2 orang Saksi</b>
                                     </div>
                                 </div><!-- End activity item-->
                             </div>
@@ -114,6 +125,32 @@
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
                                             <div class="col-6">
+                                                <label for="validationCustom04" class="form-label">Pilih Penduduk yang
+                                                    Mengajukan</label>
+                                                <select class="form-select" name="id_penduduk" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    @foreach ($penduduk as $p)
+                                                        <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
+                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
+                                                    id="validationCustom04" name="jns_pengajuan" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="Penerbitan Akta Kelahiran Baru">Penerbitan Akta
+                                                        Kelahiran Baru</option>
+                                                    <option value="Penerbitan Akta Kelahiran Hilang/Rusak">Penerbitan Akta
+                                                        Kelahiran Hilang/Rusak
+                                                    </option>
+                                                    <option value="Penerbitan Perubahan Data Akta Kelahiran">Penerbitan
+                                                        Perubahan Data
+                                                        Akta Kelahiran</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Nama Anak</label>
                                                 <input type="text" name="nama_anak" class="form-control"
                                                     id="yourPassword" value="{{ old('nama_anak') }}" required>
@@ -164,22 +201,6 @@
                                                 <label for="yourPassword" class="form-label">Nama Ibu</label>
                                                 <input type="text" name="nama_ibu" class="form-control"
                                                     id="yourPassword" value="{{ old('nama_ibu') }}" required>
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
-                                            <div class="col-6">
-                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
-                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
-                                                    id="validationCustom04" name="jns_pengajuan" required>
-                                                    <option selected disabled value="">Pilih...</option>
-                                                    <option value="Penerbitan Akta Kelahiran Baru">Penerbitan Akta
-                                                        Kelahiran Baru</option>
-                                                    <option value="Penerbitan Akta Kelahiran Hilang/Rusak">Penerbitan Akta
-                                                        Kelahiran Hilang/Rusak
-                                                    </option>
-                                                    <option value="Penerbitan Perubahan Data Akta Kelahiran">Penerbitan
-                                                        Perubahan Data
-                                                        Akta Kelahiran</option>
-                                                </select>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
