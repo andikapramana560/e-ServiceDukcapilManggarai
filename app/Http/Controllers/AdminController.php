@@ -165,6 +165,7 @@ class AdminController extends Controller
     {
         $validatedData = $request->validate([
             'id_penduduk' => 'required',
+            'jns_pengajuan' => 'required',
             'nama_pend' => 'required',
             'jns_kel_pend' => 'required',
             'tempat_lahir' => 'required',
@@ -228,6 +229,7 @@ class AdminController extends Controller
 
     public function showPengajuanKtp($id)
     {
+        $penduduk = DB::table('penduduk')->get();
         $pengajuanKtp = DB::table('kartu_tanda_penduduk')
             ->join('penduduk', 'kartu_tanda_penduduk.id_penduduk', 'penduduk.id')
             ->select('kartu_tanda_penduduk.*', 'penduduk.nama')
@@ -235,22 +237,27 @@ class AdminController extends Controller
             ->get();
         return view('admin.pengajuanKtp.show', [
             'title' => 'Pengajuan',
-            'ktp' => $pengajuanKtp
+            'ktp' => $pengajuanKtp,
+            'penduduk' => $penduduk
         ]);
     }
 
     public function editPengajuanKtp($id)
     {
+        $penduduk = DB::table('penduduk')->get();
         $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
         return view('admin.pengajuanKtp.edit', [
             'title' => 'Pengajuan',
-            'ktp' => $pengajuanKtp
+            'ktp' => $pengajuanKtp,
+            'penduduk' => $penduduk
         ]);
     }
 
     public function updatePengajuanKtp($id, Request $request)
     {
         $validatedData = $request->validate([
+            'id_penduduk' => 'required',
+            'jns_pengajuan' => 'required',
             'nama_pend' => 'required',
             'jns_kel_pend' => 'required',
             'tempat_lahir' => 'required',
@@ -260,10 +267,46 @@ class AdminController extends Controller
             'status_pernikahan' => 'required',
             'pekerjaan' => 'required',
             'kewarganegaraan' => 'required',
+            // pengajuan 1
             'dok_fc_kk' => 'file|max:1024',
+            // pengajuan 2
+            'dok_fc_kk2' => 'file|max:1024',
+            'dok_srt_ket_hilang' => 'file|max:1024',
+            'dok_ktp_rusak' => 'file|max:1024',
+            // pengajuan 3
+            'dok_fc_kk3' => 'file|max:1024',
+            'dok_ktp' => 'file|max:1024',
+            // pengajuan 4
+            'dok_fc_kk4' => 'file|max:1024',
+            'dok_ktp2' => 'file|max:1024',
         ]);
+        // pengajuan 1
         if ($request->file('dok_fc_kk')) {
             $validatedData['dok_fc_kk'] = $request->file('dok_fc_kk')->store('dokumen-pengajuan-ktp');
+        }
+        // pengajuan 2
+        if ($request->file('dok_fc_kk2')) {
+            $validatedData['dok_fc_kk2'] = $request->file('dok_fc_kk2')->store('dokumen-pengajuan-ktp');
+        }
+        if ($request->file('dok_srt_ket_hilang')) {
+            $validatedData['dok_srt_ket_hilang'] = $request->file('dok_srt_ket_hilang')->store('dokumen-pengajuan-ktp');
+        }
+        if ($request->file('dok_ktp_rusak')) {
+            $validatedData['dok_ktp_rusak'] = $request->file('dok_ktp_rusak')->store('dokumen-pengajuan-ktp');
+        }
+        // pengajuan 3
+        if ($request->file('dok_fc_kk3')) {
+            $validatedData['dok_fc_kk3'] = $request->file('dok_fc_kk3')->store('dokumen-pengajuan-ktp');
+        }
+        if ($request->file('dok_ktp')) {
+            $validatedData['dok_ktp'] = $request->file('dok_ktp')->store('dokumen-pengajuan-ktp');
+        }
+        // pengajuan 4
+        if ($request->file('dok_fc_kk4')) {
+            $validatedData['dok_fc_kk4'] = $request->file('dok_fc_kk4')->store('dokumen-pengajuan-ktp');
+        }
+        if ($request->file('dok_ktp2')) {
+            $validatedData['dok_ktp2'] = $request->file('dok_ktp2')->store('dokumen-pengajuan-ktp');
         }
         $validatedData['keterangan'] = $request->keterangan;
         $validatedData['status'] = 0;
@@ -285,8 +328,6 @@ class AdminController extends Controller
 
     public function destroyPengajuanKtp($id)
     {
-        $pengajuanKtp = DB::table('kartu_tanda_penduduk')->where('id', $id)->get();
-        Storage::delete($pengajuanKtp[0]->dok_fc_kk);
         Ktp::where('id', $id)->delete();
         Alert::success('Success', 'Pengajuan berhasil dihapus!');
         return redirect()->route('admin-pengajuanKtp');

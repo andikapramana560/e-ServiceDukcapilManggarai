@@ -19,11 +19,47 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="tab-content">
+                            <div class="tab-content pt-3">
                                 <form action="" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
+                                            <div class="col-6">
+                                                <label for="validationCustom04" class="form-label">Pilih Penduduk yang
+                                                    Mengajukan</label>
+                                                <select class="form-select" name="id_penduduk" disabled>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    @foreach ($penduduk as $p)
+                                                        <option value="{{ $p->id }}"
+                                                            @if ($ktp[0]->id_penduduk == $p->id) selected @endif>
+                                                            {{ $p->nama }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
+                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
+                                                    id="validationCustom04" name="jns_pengajuan" disabled>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="Penerbitan KTP Baru"
+                                                        @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Baru') selected @endif>Penerbitan KTP
+                                                        Baru</option>
+                                                    <option value="Penerbitan KTP Hilang/Rusak"
+                                                        @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Hilang/Rusak') selected @endif>Penerbitan KTP
+                                                        Hilang/Rusak
+                                                    </option>
+                                                    <option value="Penerbitan Perubahan Data KTP"
+                                                        @if ($ktp[0]->jns_pengajuan === 'Penerbitan Perubahan Data KTP') selected @endif>Penerbitan
+                                                        Perubahan Data
+                                                        KTP</option>
+                                                    <option value="Penerbitan KTP Penduduk Pindah"
+                                                        @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Penduduk Pindah') selected @endif>Penerbitan KTP
+                                                        Penduduk
+                                                        Pindah</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Nama</label>
                                                 <input type="text" name="nama_pend" class="form-control"
@@ -97,7 +133,8 @@
                                             <div class="col-6">
                                                 <label for="validationCustom04" class="form-label">Status
                                                     Pernikahan</label>
-                                                <select class="form-select @error('status_pernikahan') is-invalid @enderror"
+                                                <select
+                                                    class="form-select @error('status_pernikahan') is-invalid @enderror"
                                                     id="validationCustom04" name="status_pernikahan" required>
                                                     <option selected disabled value="">Pilih...</option>
                                                     <option value="Sudah Menikah"
@@ -140,18 +177,85 @@
                                                     required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
-                                            <div class="col-12">
-                                                <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
-                                                    rel="noopener noreferrer" class="btn btn-secondary">File Dokumen
-                                                    KK</a>
-                                            </div>
-                                            <div class="col-12">
-                                                <label for="yourPassword" class="form-label">Dokumen Kartu
-                                                    Keluarga</label>
-                                                <input type="file" name="dok_fc_kk" class="form-control"
-                                                    id="yourPassword">
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
+                                            {{-- tampilkan sesuai dg pengajuan --}}
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Baru')
+                                                <b>Dokumen Pengajuan Penerbitan KTP Baru</b>
+                                                <div class="col-12">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Hilang/Rusak')
+                                                <b>Dokumen Pengajuan Penerbitan KTP Hilang/Rusak</b>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk2) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk2" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Surat Keterangan
+                                                        Hilang</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_srt_ket_hilang) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_srt_ket_hilang" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP
+                                                        Rusak</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp_rusak) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_ktp_rusak" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan Perubahan Data KTP')
+                                                <b>Dokumen Pengajuan Perubahan Data KTP</b>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label>
+                                                    <input type="file" name="dok_fc_kk3" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP</label>
+                                                    <input type="file" name="dok_ktp" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @else
+                                                <b>Dokumen KTP Penduduk Pindahan</b>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label>
+                                                    <input type="file" name="dok_fc_kk4" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP</label>
+                                                    <input type="file" name="dok_ktp2" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @endif
                                             <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Keterangan</label>
                                                 <textarea name="keterangan" id="" cols="30" rows="4" class="form-control"
