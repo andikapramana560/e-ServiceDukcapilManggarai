@@ -28,12 +28,11 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Jenis Pengajuan</th>
                                         <th scope="col">User Pemohon</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Nama Anak</th>
                                         <th scope="col">Anak Ke- </th>
-                                        <th scope="col">Jenis Kelamin</th>
-                                        <th scope="col">Tempat, Tanggal Lahir</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Opsi</th>
                                     </tr>
@@ -42,13 +41,11 @@
                                     @foreach ($pengajuanAkl as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $p->jns_pengajuan }}</td>
                                             <td>{{ $p->nama }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
                                             <td>{{ $p->nama_anak }}</td>
                                             <td>{{ $p->anak_ke }}</td>
-                                            <td>{{ $p->jns_kel_anak }}</td>
-                                            <td>{{ $p->tmp_lahir_anak }},
-                                                {{ Carbon\Carbon::parse($p->tgl_lahir_anak)->format('d F Y') }}</td>
                                             <td>
                                                 @if ($p->status == 0)
                                                     <span class="badge bg-secondary">Diproses</span>
@@ -61,6 +58,16 @@
                                             <td>
                                                 <a href="{{ route('admin-showPengajuanAktaKelahiran', $p->id) }}"
                                                     class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
+                                                <a href="{{ route('admin-editPengajuanAktaKelahiran', $p->id) }}"
+                                                    class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
+                                                <form action="{{ route('admin-destroyPengajuanAktaKelahiran', $p->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-danger" type="submit"
+                                                        onclick="return confirm('Apakah anda yakin?')"><i
+                                                            class="bx bxs-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

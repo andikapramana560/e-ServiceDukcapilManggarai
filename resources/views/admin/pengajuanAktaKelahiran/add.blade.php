@@ -210,7 +210,7 @@
                                                     Lahir</label>
                                                 <input type="file" name="dok_surat_ket_lahir" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -218,7 +218,7 @@
                                                     Orang Tua</label>
                                                 <input type="file" name="dok_fc_akta_nikah_ortu" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -226,7 +226,7 @@
                                                     Keluarga</label>
                                                 <input type="file" name="dok_fc_kk" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -234,7 +234,7 @@
                                                     Penduduk Suami/Istri</label>
                                                 <input type="file" name="dok_fc_ktp_suami_istri" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -242,7 +242,7 @@
                                                     Penduduk Saksi</label>
                                                 <input type="file" name="dok_fc_ktp_saksi" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -307,7 +307,7 @@
                                                     Penduduk Suami/Istri</label>
                                                 <input type="file" name="dok_fc_ktp_suami_istri2" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -315,7 +315,7 @@
                                                     Penduduk Saksi</label>
                                                 <input type="file" name="dok_fc_ktp_saksi2" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -325,28 +325,28 @@
                                                     Asli</label>
                                                 <input type="file" name="dok_akta_asli" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen KTP</label>
                                                 <input type="file" name="dok_ktp" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen KK</label>
                                                 <input type="file" name="dok_kk" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Ijazah</label>
                                                 <input type="file" name="dok_ijazah" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -354,7 +354,7 @@
                                                     Penduduk Saksi</label>
                                                 <input type="file" name="dok_fc_ktp_saksi3" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
