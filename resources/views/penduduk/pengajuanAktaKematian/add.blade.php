@@ -39,7 +39,7 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Semua Dokumen pendukung <b>Wajib</b> diisi
+                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan <b>Jenis Pengajuan</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
@@ -51,10 +51,50 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                        Jika semua form telah terisi sesuai dengan <b>Jenis Pengajuan</b>, silahkan klik
+                                        tombol submit
                                     </div>
                                 </div><!-- End activity item-->
 
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+                </div>
+                <div class="col-6">
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Catatan Untuk Masing - Masing Jenis Pengajuan</h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kematian Baru</b>, anda hanya perlu
+                                        melengkapi data
+                                        pada
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kematian Baru</b>, yaitu <b>Surat Keterangan
+                                            Kematian dari Rumah Sakit atau Desa/Kel</b>, <b>Dokumen Akta Kelahiran
+                                            Suami/Istri</b>, <b>Dokumen Kartu Tanda Penduduk Alm</b>, <b>Dokumen Akta
+                                            Kelahiran Alm</b>, <b>Dokumen Kartu Tanda Penduduk Ahli Waris</b>, <b>Dokumen
+                                            Kartu Keluarga Alm</b>, dan <b>Dokumen KTP 2 orang Saksi</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kematian Hilang/Rusak</b>, anda hanya
+                                        perlu
+                                        melengkapi
+                                        data pada
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kematian Hilang/Rusak</b>, yaitu <b>Surat
+                                            Keterangan Hilang dari Kepolisian</b>, <b>Dokumen Akta yang Hilang</b>,
+                                        <b>Dokumen Kartu Tanda Penduduk Alm</b>, <b>Dokumen KTP 2 orang Saksi</b>, dan
+                                        <b>Dokumen Kartu Keluarga</b>
+                                    </div>
+                                </div><!-- End activity item-->
                             </div>
 
                         </div>
@@ -74,6 +114,19 @@
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
+                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
+                                                    id="validationCustom04" name="jns_pengajuan" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="Penerbitan Akta Kematian Baru">Penerbitan Akta
+                                                        Kematian Baru</option>
+                                                    <option value="Penerbitan Akta Kematian Hilang/Rusak">Penerbitan Akta
+                                                        Kematian Hilang/Rusak
+                                                    </option>
+                                                </select>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Nama Almarhum</label>
                                                 <input type="text" name="nama_alm_pend" class="form-control"
@@ -114,11 +167,12 @@
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
+                                            <b>Dokumen Penerbitan Akta Kematian</b>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
                                                     Kematian</label>
                                                 <input type="file" name="dok_surat_ket_kematian" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -126,7 +180,7 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Surat Akta
                                                     Kelahiran Suami/Istri</label>
                                                 <input type="file" name="dok_akta_kel_suami_istri"
-                                                    class="form-control" id="yourPassword" required>
+                                                    class="form-control" id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -134,7 +188,7 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
                                                     Penduduk Alm</label>
                                                 <input type="file" name="dok_fc_ktp_alm" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -142,7 +196,7 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Akta Kelahiran
                                                     Alm</label>
                                                 <input type="file" name="dok_fc_akta_kel_alm" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -150,7 +204,7 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
                                                     Penduduk Ahli Waris</label>
                                                 <input type="file" name="dok_fc_ktp_ahli_waris" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -158,7 +212,7 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Keluarga
                                                     Alm</label>
                                                 <input type="file" name="dok_fc_kk" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
@@ -166,9 +220,50 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
                                                     Penduduk Saksi</label>
                                                 <input type="file" name="dok_fc_ktp_saksi" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
+
+                                            <b>Dokumen Penerbitan Akta Kematian yang Hilang/Rusak</b>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
+                                                    Kehilangan</label>
+                                                <input type="file" name="dok_surat_ket_hilang" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Akta yang
+                                                    Hilang</label>
+                                                <input type="file" name="dok_fc_akta_hilang" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen KTP Alm</label>
+                                                <input type="file" name="dok_fc_ktp_alm2" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                    Penduduk Saksi</label>
+                                                <input type="file" name="dok_fc_ktp_saksi2" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk2" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
 
                                             <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Keterangan</label>

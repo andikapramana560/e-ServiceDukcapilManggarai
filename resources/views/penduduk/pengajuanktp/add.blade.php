@@ -27,22 +27,33 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Pada form dokumen kartu keluarga, anda scan atau foto dahulu kartu keluarga anda,
-                                        kemudian masukkan file hasil scan tadi ke form kartu keluarga
+                                        Pada form yang berisikan input file / dokumen, anda dapat meng-scan dahulu dokumen
+                                        yang asli menjadi dokumen berformat pdf
                                     </div>
                                 </div><!-- End activity item-->
-
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Pastikan ukuran file yang akan diupload tidak lebih dari 1 Mb
+                                        File yang diupload maksimal berukuran 1 Mb
                                     </div>
                                 </div><!-- End activity item-->
-
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan <b>Jenis Pengajuan</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Form keterangan dapat diisi jika ada keterangan tambahan mengenai pengajuan
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika semua form telah terisi sesuai dengan <b>Jenis Pengajuan</b>, silahkan klik
+                                        tombol submit
                                     </div>
                                 </div><!-- End activity item-->
 
@@ -51,6 +62,59 @@
                         </div>
                     </div><!-- End Recent Activity -->
                 </div>
+                <div class="col-6">
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Catatan Untuk Masing - Masing Jenis Pengajuan</h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Penerbitan KTP Baru</b>, anda hanya perlu melengkapi
+                                        data
+                                        pada
+                                        Dokumen Pengajuan <b>Penerbitan KTP Baru</b>, yaitu <b>dokumen kartu keluarga</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan Penerbitan KTP Hilang/Rusak, anda hanya perlu melengkapi
+                                        data pada
+                                        Dokumen Pengajuan Penerbitan KTP Hilang/Rusak, yaitu <b>Dokumen Kartu
+                                            Keluarga</b>, <b>Surat Penyataan Penyebab Hilang/Rusak dari Kepolisian</b>, dan
+                                        <b>Dokumen KTP-el yang Rusak</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan Perubahan Data KTP, anda hanya perlu melengkapi data
+                                        pada
+                                        Dokumen Pengajuan Perubahan Data KTP, yaitu <b>Dokumen Kartu Keluarga yang
+                                            Baru</b> dan <b>Dokumen KTP asli</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan KTP Penduduk Pindahan, anda hanya perlu melengkapi data
+                                        pada
+                                        Dokumen Pengajuan KTP Penduduk Pindahan, yaitu <b>Dokumen Kartu Keluarga</b> dan
+                                        <b>KTP-el dari daerah asal</b>
+                                    </div>
+                                </div><!-- End activity item-->
+
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+                </div>
+            </div>
             </div>
         </section>
         <section class="section">
@@ -63,6 +127,21 @@
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
+                                            <div class="col-12">
+                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
+                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
+                                                    id="validationCustom04" name="jns_pengajuan" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="Penerbitan KTP Baru">Penerbitan KTP Baru</option>
+                                                    <option value="Penerbitan KTP Hilang/Rusak">Penerbitan KTP Hilang/Rusak
+                                                    </option>
+                                                    <option value="Penerbitan Perubahan Data KTP">Penerbitan Perubahan Data
+                                                        KTP</option>
+                                                    <option value="Penerbitan KTP Penduduk Pindah">Penerbitan KTP Penduduk
+                                                        Pindah</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Nama</label>
                                                 <input type="text" name="nama_pend" class="form-control"
@@ -101,7 +180,8 @@
                                             </div>
                                             <div class="col-6">
                                                 <label for="validationCustom04" class="form-label">Agama</label>
-                                                <select class="form-select" id="validationCustom04" name="agama" required>
+                                                <select class="form-select" id="validationCustom04" name="agama"
+                                                    required>
                                                     <option selected disabled value="">Pilih...</option>
                                                     <option value="Hindu">Hindu</option>
                                                     <option value="Islam">Islam</option>
@@ -146,11 +226,64 @@
                                                     id="yourPassword" value="{{ old('kewarganegaraan') }}" required>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
+                                            <b>Dokumen Pengajuan Penerbitan KTP Baru</b>
                                             <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Dokumen Kartu
                                                     Keluarga</label>
                                                 <input type="file" name="dok_fc_kk" class="form-control"
-                                                    id="yourPassword" required>
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <b>Dokumen Pengajuan Penerbitan KTP Hilang/Rusak</b>
+                                            <div class="col-4">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk2" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="yourPassword" class="form-label">Surat Keterangan
+                                                    Hilang</label>
+                                                <input type="file" name="dok_srt_ket_hilang" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-4">
+                                                <label for="yourPassword" class="form-label">Dokumen KTP Rusak</label>
+                                                <input type="file" name="dok_ktp_rusak" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <b>Dokumen Pengajuan Perubahan Data KTP</b>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk3" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen KTP</label>
+                                                <input type="file" name="dok_ktp" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <b>Dokumen KTP Penduduk Pindahan</b>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk4" class="form-control"
+                                                    id="yourPassword">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen KTP</label>
+                                                <input type="file" name="dok_ktp2" class="form-control"
+                                                    id="yourPassword">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-12">

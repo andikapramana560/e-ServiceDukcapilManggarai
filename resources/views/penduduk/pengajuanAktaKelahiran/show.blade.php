@@ -21,6 +21,23 @@
                         <div class="card-body">
                             <h5 class="card-title">Data Pengajuan</h5>
                             <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Jenis Pengajuan</label>
+                                <div class="col-sm-8">
+                                    <select class="form-select" name="jns_pengajuan" disabled>
+                                        <option selected disabled value="">Pilih...</option>
+                                        <option value="Penerbitan Akta Kelahiran Baru"
+                                            @if ($akl[0]->jns_pengajuan === 'Penerbitan Akta Kelahiran Baru') selected @endif>Penerbitan Akta Kelahiran Baru
+                                        </option>
+                                        <option value="Penerbitan Akta Kelahiran Hilang/Rusak"
+                                            @if ($akl[0]->jns_pengajuan === 'Penerbitan Akta Kelahiran Hilang/Rusak') selected @endif>Penerbitan Akta Kelahiran
+                                            Hilang/Rusak</option>
+                                        <option value="Penerbitan Perubahan Data Akta Kelahiran"
+                                            @if ($akl[0]->jns_pengajuan === 'Penerbitan Perubahan Data Akta Kelahiran') selected @endif>Penerbitan Akta Kelahiran
+                                            Hilang/Rusak</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Nama Anak</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputText"
@@ -69,76 +86,72 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Surat Keterangan
-                                    Lahir</label>
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Pendukung untuk
+                                    {{ $akl[0]->jns_pengajuan }}</label>
                                 <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_lahir) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Akta Pernikahan
-                                    Orang Tua</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_fc_akta_nikah_ortu) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Kartu
-                                    Keluarga</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_fc_kk) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Kartu Tanda
-                                    Penduduk Suami/Istri</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_suami_istri) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Kartu Tanda
-                                    Penduduk Saksi</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_saksi) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Ijazah</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_fc_ijazah) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Surat Keterangan
-                                    Sekolah</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_sekolah) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Akta Anak
-                                    Sebelumnya</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_akta_anak_sblmnya) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download
-                                        File</a>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Surat Keterangan
-                                    Kematian</label>
-                                <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_kematian) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download
-                                        File</a>
+                                    @if ($akl[0]->jns_pengajuan === 'Penerbitan Akta Kelahiran Baru')
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_lahir) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File Surat
+                                            Keterangan Lahir</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_akta_nikah_ortu) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download
+                                            File Akta Pernikahan Orang Tua</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_kk) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_suami_istri) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download
+                                            File KTP Suami/Istri</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_saksi) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP
+                                            Saksi</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ijazah) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File
+                                            Ijazah</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_sekolah) }}"
+                                            target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-secondary mt-2">Download
+                                            File Surat Keterangan Sekolah</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_akta_anak_sblmnya) }}"
+                                            target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-secondary mt-2">Download
+                                            File Akta Anak Sebelumnya</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_kematian) }}"
+                                            target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-secondary mt-2">Download
+                                            File Surat Kematian</a>
+                                    @elseif($akl[0]->jns_pengajuan === 'Penerbitan Akta Kelahiran Hilang/Rusak')
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_hilang) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download Surat
+                                            Keterangan Hilang</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_akta_hilang) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File Akta
+                                            Kelahiran</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_kk_terbaru) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File Kartu
+                                            Keluarga
+                                        </a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_suami_istri2) }}"
+                                            target="_blank" rel="noopener noreferrer"
+                                            class="btn btn-secondary mt-2">Download File KTP
+                                            Suami/Istri</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_saksi2) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP
+                                            Saksi</a>
+                                    @else
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_akta_asli) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File Akta
+                                            Kelahiran</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_ktp) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_kk) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_ijazah) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File
+                                            Ijazah</a>
+                                        <a href="{{ asset('storage/' . $akl[0]->dok_fc_ktp_saksi3) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP
+                                            Saksi</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row mb-3">

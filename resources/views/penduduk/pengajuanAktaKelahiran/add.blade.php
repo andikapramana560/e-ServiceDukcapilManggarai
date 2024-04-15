@@ -40,9 +40,7 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Untuk form dokumen <b>Ijazah</b>, <b>Surat Keterangan Sekolah</b>, <b>Akta Anak
-                                            Sebelumnya</b> dan <b>Akta Kematian</b> dapat dikosongkan apabila tidak memiliki
-                                        dokumen tersebut
+                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan <b>Jenis Pengajuan</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
@@ -54,10 +52,62 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                        Jika semua form telah terisi sesuai dengan <b>Jenis Pengajuan</b>, silahkan klik
+                                        tombol submit
                                     </div>
                                 </div><!-- End activity item-->
 
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+                </div>
+                <div class="col-6">
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Catatan Untuk Masing - Masing Jenis Pengajuan</h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kelahiran Baru</b>, anda hanya perlu
+                                        melengkapi data
+                                        pada
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kelahiran Baru</b>, yaitu <b>Surat Keterangan
+                                            Lahir dari Rumah Sakit</b>, <b>Dokumen Akta Pernikahan Orang Tua</b>, <b>Dokumen
+                                            Kartu Keluarga</b>, <b>Dokumen Kartu Tanda Penduduk Suami dan Istri</b>,
+                                        <b>Dokumen Kartu Tanda Penduduk 2 orang Saksi</b>, <b>Dokumen Ijazah SD s/d terakhir
+                                            yang dimiliki</b>, <b>Dokumen Akta Anak Sebelumnya</b>, dan <b>Dokumen Surat
+                                            Keterangan Kematian</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Penerbitan Akta Kelahiran Hilang/Rusak</b>, anda
+                                        hanya perlu
+                                        melengkapi
+                                        data pada
+                                        Dokumen Pengajuan <b>Penerbitan Akta Kelahiran Hilang/Rusak</b>, yaitu <b>Surat
+                                            Keterangan Hilang dari Kepolisian</b>, <b>Dokumen Akta yang Hilang</b>,
+                                        <b>Dokumen Kartu Keluarga</b>, <b>Dokumen KTP suami/istri</b> dan <b>Dokumen KTP 2
+                                            orang Saksi</b>
+                                    </div>
+                                </div><!-- End activity item-->
+                                <div class="activity-item d-flex">
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        Jika anda memilih pengajuan <b>Perubahan Data Akta Kelahiran</b>, anda hanya perlu
+                                        melengkapi data
+                                        pada
+                                        Dokumen Pengajuan <b>Perubahan Data Akta Kelahiran</b>, yaitu <b>Dokumen Akta
+                                            Kelahiran</b>, <b>Dokumen KTP</b>, <b>Dokumen Kartu Keluarga</b>, <b>Dokumen
+                                            Ijazah</b>, dan <b>Dokumen KTP 2 orang Saksi</b>
+                                    </div>
+                                </div><!-- End activity item-->
                             </div>
 
                         </div>
@@ -75,6 +125,22 @@
                                 <div class="tab-content pt-3">
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
+                                                <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
+                                                    id="validationCustom04" name="jns_pengajuan" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    <option value="Penerbitan Akta Kelahiran Baru">Penerbitan Akta
+                                                        Kelahiran Baru</option>
+                                                    <option value="Penerbitan Akta Kelahiran Hilang/Rusak">Penerbitan Akta
+                                                        Kelahiran Hilang/Rusak
+                                                    </option>
+                                                    <option value="Penerbitan Perubahan Data Akta Kelahiran">Penerbitan
+                                                        Perubahan Data
+                                                        Akta Kelahiran</option>
+                                                </select>
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Nama Anak</label>
                                                 <input type="text" name="nama_anak" class="form-control"
@@ -129,12 +195,13 @@
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
 
+                                            <b>Dokumen Penerbitan Akta Kelahiran Baru</b>
                                             <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
                                                     Lahir</label>
                                                 <input type="file" name="dok_surat_ket_lahir" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -142,7 +209,7 @@
                                                     Orang Tua</label>
                                                 <input type="file" name="dok_fc_akta_nikah_ortu" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -150,7 +217,7 @@
                                                     Keluarga</label>
                                                 <input type="file" name="dok_fc_kk" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -158,7 +225,7 @@
                                                     Penduduk Suami/Istri</label>
                                                 <input type="file" name="dok_fc_ktp_suami_istri" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -166,7 +233,7 @@
                                                     Penduduk Saksi</label>
                                                 <input type="file" name="dok_fc_ktp_saksi" class="form-control"
                                                     id="yourPassword"
-                                                    placeholder="Masukkan scan file surat keterangan lahir" required>
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>
                                             <div class="col-6">
@@ -196,6 +263,87 @@
                                                 <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
                                                     Kematian</label>
                                                 <input type="file" name="dok_surat_ket_kematian" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <b>Dokumen Penerbitan Akta Kelahiran Hilang/Rusak</b>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Surat Keterangan
+                                                    Kehilangan</label>
+                                                <input type="file" name="dok_surat_ket_hilang" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Akta Yang
+                                                    Hilang</label>
+                                                <input type="file" name="dok_fc_akta_hilang" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                    Keluarga</label>
+                                                <input type="file" name="dok_fc_kk_terbaru" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                    Penduduk Suami/Istri</label>
+                                                <input type="file" name="dok_fc_ktp_suami_istri2" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                    Penduduk Saksi</label>
+                                                <input type="file" name="dok_fc_ktp_saksi2" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+
+                                            <b>Dokumen Perubahan Data Akta Kelahiran</b>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Akta Kelahiran
+                                                    Asli</label>
+                                                <input type="file" name="dok_akta_asli" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen KTP</label>
+                                                <input type="file" name="dok_ktp" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen KK</label>
+                                                <input type="file" name="dok_kk" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Ijazah</label>
+                                                <input type="file" name="dok_ijazah" class="form-control"
+                                                    id="yourPassword"
+                                                    placeholder="Masukkan scan file surat keterangan lahir">
+                                                <div class="invalid-feedback">Please enter your password!</div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="yourPassword" class="form-label">Dokumen Kartu Tanda
+                                                    Penduduk Saksi</label>
+                                                <input type="file" name="dok_fc_ktp_saksi3" class="form-control"
                                                     id="yourPassword"
                                                     placeholder="Masukkan scan file surat keterangan lahir">
                                                 <div class="invalid-feedback">Please enter your password!</div>

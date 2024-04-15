@@ -11,9 +11,7 @@
                     <li class="breadcrumb-item"><a href="{{ route('admin-pengajuanKtp') }}">Pengajuan</a></li>
                     <li class="breadcrumb-item active">Update Pengajuan</li>
                 </ol>
-            </nav><a href="{{ asset('storage/' . $akl[0]->dok_surat_ket_kematian) }}" target="_blank"
-                rel="noopener noreferrer" class="btn btn-secondary mt-2">Download
-                File Surat Kematian</a>
+            </nav>
         </div><!-- End Page Title -->
         <section class="section">
             <div class="row">
@@ -185,9 +183,8 @@
                                                 <div class="col-12">
                                                     <label for="yourPassword" class="form-label">Dokumen Kartu
                                                         Keluarga</label> <br>
-                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}"
-                                                        target="_blank" rel="noopener noreferrer"
-                                                        class="btn btn-secondary mb-3">Dokumen
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
                                                         Sebelumnya</a>
                                                     <input type="file" name="dok_fc_kk" class="form-control"
                                                         id="yourPassword">
@@ -233,12 +230,19 @@
                                                 <div class="col-6">
                                                     <label for="yourPassword" class="form-label">Dokumen Kartu
                                                         Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk3) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
                                                     <input type="file" name="dok_fc_kk3" class="form-control"
                                                         id="yourPassword">
                                                     <div class="invalid-feedback">Please enter your password!</div>
                                                 </div>
                                                 <div class="col-6">
                                                     <label for="yourPassword" class="form-label">Dokumen KTP</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
                                                     <input type="file" name="dok_ktp" class="form-control"
                                                         id="yourPassword">
                                                     <div class="invalid-feedback">Please enter your password!</div>
@@ -248,12 +252,19 @@
                                                 <div class="col-6">
                                                     <label for="yourPassword" class="form-label">Dokumen Kartu
                                                         Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk4) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
                                                     <input type="file" name="dok_fc_kk4" class="form-control"
                                                         id="yourPassword">
                                                     <div class="invalid-feedback">Please enter your password!</div>
                                                 </div>
                                                 <div class="col-6">
                                                     <label for="yourPassword" class="form-label">Dokumen KTP</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp2) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
                                                     <input type="file" name="dok_ktp2" class="form-control"
                                                         id="yourPassword">
                                                     <div class="invalid-feedback">Please enter your password!</div>

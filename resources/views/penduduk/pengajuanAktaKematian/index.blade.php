@@ -27,9 +27,9 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Jenis Pengajuan</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Nama Alm</th>
-                                        <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Meninggal</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Opsi</th>
@@ -39,9 +39,9 @@
                                     @foreach ($pengajuanAkm as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $p->jns_pengajuan }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
                                             <td>{{ $p->nama_alm_pend }}</td>
-                                            <td>{{ $p->jns_kel_alm }}</td>
                                             <td>
                                                 {{ Carbon\Carbon::parse($p->tgl_meninggal)->format('d F Y') }}</td>
                                             </td>

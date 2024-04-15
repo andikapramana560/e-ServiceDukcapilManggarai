@@ -335,7 +335,6 @@ class AdminController extends Controller
     // pengajuan Akta Kelahiran
     public function pengajuanAktaKelahiran()
     {
-
         $pengajuanAkl = DB::table('akta_kelahiran')
             ->join('penduduk', 'akta_kelahiran.id_penduduk', 'penduduk.id')
             ->select('akta_kelahiran.*', 'penduduk.nama')
@@ -684,7 +683,6 @@ class AdminController extends Controller
         if ($request->file('dok_fc_kk2')) {
             $validatedData['dok_fc_kk2'] = $request->file('dok_fc_kk2')->store('dokumen-pengajuan-aktaKematian');
         }
-
         $validatedData['keterangan'] = $request->keterangan;
         $validatedData['catatan'] = NULL;
         $validatedData['status'] = 0;

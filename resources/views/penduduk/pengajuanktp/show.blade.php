@@ -21,6 +21,25 @@
                         <div class="card-body">
                             <h5 class="card-title">Data Pengajuan</h5>
                             <div class="row mb-3">
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Jenis Pengajuan</label>
+                                <div class="col-sm-8">
+                                    <select class="form-select" name="jns_pengajuan" disabled>
+                                        <option selected disabled value="">Pilih...</option>
+                                        <option value="Penerbitan KTP Baru"
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Baru') selected @endif>Penerbitan KTP Baru</option>
+                                        <option value="Penerbitan KTP Hilang/Rusak"
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Hilang/Rusak') selected @endif>Penerbitan KTP Hilang/Rusak
+                                        </option>
+                                        <option value="Penerbitan Perubahan Data KTP"
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan Perubahan Data KTP') selected @endif>Penerbitan Perubahan Data
+                                            KTP</option>
+                                        <option value="Penerbitan KTP Penduduk Pindah"
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Penduduk Pindah') selected @endif>Penerbitan KTP Penduduk
+                                            Pindah</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-4 col-form-label">Nama</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" id="inputText"
@@ -117,10 +136,32 @@
                                 </div>
                             </div>
                             <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Pendukung</label>
+                                <label for="inputEmail3" class="col-sm-4 col-form-label">Dokumen Pendukung untuk
+                                    {{ $ktp[0]->jns_pengajuan }}</label>
                                 <div class="col-sm-8">
-                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
-                                        rel="noopener noreferrer" class="btn btn-secondary">Download File KK</a>
+                                    @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Baru')
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                    @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Hilang/Rusak')
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk2) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_srt_ket_hilang) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download Surat
+                                            Keterangan Hilang</a>
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_ktp_rusak) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP
+                                            Rusak</a>
+                                    @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan Perubahan Data KTP')
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk3) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_ktp) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP</a>
+                                    @else
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk4) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KK</a>
+                                        <a href="{{ asset('storage/' . $ktp[0]->dok_ktp2) }}" target="_blank"
+                                            rel="noopener noreferrer" class="btn btn-secondary mt-2">Download File KTP</a>
+                                    @endif
                                 </div>
                             </div>
                             <div class="row mb-3">

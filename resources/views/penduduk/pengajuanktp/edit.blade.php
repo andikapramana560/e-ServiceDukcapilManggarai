@@ -19,7 +19,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <div class="tab-content">
+                            <div class="tab-content pt-3">
                                 <form action="" method="post" enctype="multipart/form-data">
                                     @csrf
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
@@ -145,13 +145,98 @@
                                                     rel="noopener noreferrer" class="btn btn-secondary">File Dokumen
                                                     KK</a>
                                             </div>
-                                            <div class="col-12">
-                                                <label for="yourPassword" class="form-label">Dokumen Kartu
-                                                    Keluarga</label>
-                                                <input type="file" name="dok_fc_kk" class="form-control"
-                                                    id="yourPassword">
-                                                <div class="invalid-feedback">Please enter your password!</div>
-                                            </div>
+                                            @if ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Baru')
+                                                <b>Dokumen Pengajuan Penerbitan KTP Baru</b>
+                                                <div class="col-12">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan KTP Hilang/Rusak')
+                                                <b>Dokumen Pengajuan Penerbitan KTP Hilang/Rusak</b>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk2) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk2" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Surat Keterangan
+                                                        Hilang</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_srt_ket_hilang) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_srt_ket_hilang" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP
+                                                        Rusak</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp_rusak) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_ktp_rusak" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @elseif ($ktp[0]->jns_pengajuan === 'Penerbitan Perubahan Data KTP')
+                                                <b>Dokumen Pengajuan Perubahan Data KTP</b>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk3) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk3" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_ktp" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @else
+                                                <b>Dokumen KTP Penduduk Pindahan</b>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen Kartu
+                                                        Keluarga</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_fc_kk4) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_fc_kk4" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <label for="yourPassword" class="form-label">Dokumen KTP</label> <br>
+                                                    <a href="{{ asset('storage/' . $ktp[0]->dok_ktp2) }}" target="_blank"
+                                                        rel="noopener noreferrer" class="btn btn-secondary mb-3">Dokumen
+                                                        Sebelumnya</a>
+                                                    <input type="file" name="dok_ktp2" class="form-control"
+                                                        id="yourPassword">
+                                                    <div class="invalid-feedback">Please enter your password!</div>
+                                                </div>
+                                            @endif
                                             <div class="col-12">
                                                 <label for="yourPassword" class="form-label">Keterangan</label>
                                                 <textarea name="keterangan" id="" cols="30" rows="4" class="form-control"
