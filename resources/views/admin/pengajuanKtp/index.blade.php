@@ -27,8 +27,8 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
-                                        <th scope="col">User Pemohon</th>
                                         <th scope="col">Jenis Pengajuan</th>
+                                        <th scope="col">User Pemohon</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Tempat, Tanggal Lahir</th>
@@ -40,8 +40,8 @@
                                     @foreach ($pengajuanktp as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
-                                            <td>{{ $p->nama }}</td>
                                             <td>{{ $p->jns_pengajuan }}</td>
+                                            <td>{{ $p->nama }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
                                             <td>{{ $p->nama_pend }}</td>
                                             <td>{{ $p->tempat_lahir }},

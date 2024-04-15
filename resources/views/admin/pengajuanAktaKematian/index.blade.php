@@ -28,10 +28,10 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">No</th>
+                                        <th scope="col">Jenis Pengajuan</th>
                                         <th scope="col">User Pemohon</th>
                                         <th scope="col">Tanggal Pengajuan</th>
                                         <th scope="col">Nama Alm</th>
-                                        <th scope="col">Jenis Kelamin</th>
                                         <th scope="col">Tanggal Meninggal</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Opsi</th>
@@ -41,10 +41,10 @@
                                     @foreach ($pengajuanAkm as $p)
                                         <tr>
                                             <th scope="row">{{ $loop->iteration }}</th>
+                                            <td>{{ $p->jns_pengajuan }}</td>
                                             <td>{{ $p->nama }}</td>
                                             <td>{{ Carbon\Carbon::parse($p->tgl_pengajuan)->format('d F Y') }}</td>
                                             <td>{{ $p->nama_alm_pend }}</td>
-                                            <td>{{ $p->jns_kel_alm }}</td>
                                             <td>
                                                 {{ Carbon\Carbon::parse($p->tgl_meninggal)->format('d F Y') }}</td>
                                             <td>
@@ -59,6 +59,16 @@
                                             <td>
                                                 <a href="{{ route('admin-showPengajuanAktaKematian', $p->id) }}"
                                                     class="btn btn-sm btn-info"> <i class="bx bxs-info-circle"></i></a>
+                                                <a href="{{ route('admin-editPengajuanAktaKematian', $p->id) }}"
+                                                    class="btn btn-sm btn-warning"> <i class="bx bxs-edit"></i></a>
+                                                <form action="{{ route('admin-destroyPengajuanAktaKematian', $p->id) }}"
+                                                    method="POST" class="d-inline">
+                                                    @method('delete')
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-danger" type="submit"
+                                                        onclick="return confirm('Apakah anda yakin?')"><i
+                                                            class="bx bxs-trash"></i></button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

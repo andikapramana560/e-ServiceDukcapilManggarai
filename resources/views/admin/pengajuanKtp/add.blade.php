@@ -40,7 +40,7 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan jenis pengajuan
+                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan <b>Jenis Pengajuan</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
@@ -52,7 +52,8 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                        Jika semua form telah terisi sesuai dengan <b>Jenis Pengajuan</b>, silahkan klik
+                                        tombol submit
                                     </div>
                                 </div><!-- End activity item-->
 

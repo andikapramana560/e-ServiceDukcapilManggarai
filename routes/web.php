@@ -70,6 +70,7 @@ Route::prefix('admin')
         Route::get('/editPengajuanAktaKematian/{id}', [AdminController::class, 'editPengajuanAktaKematian'])->name('admin-editPengajuanAktaKematian');
         Route::post('/editPengajuanAktaKematian/{id}', [AdminController::class, 'updatePengajuanAktaKematian'])->name('admin-updatePengajuanAktaKematian');
         Route::post('/showPengajuanAktaKematian/{id}', [AdminController::class, 'processPengajuanAktaKematian'])->name('admin-processPengajuanAktaKematian');
+        Route::delete('/destroyPengajuanAktaKematian/{id}', [AdminController::class, 'destroyPengajuanAktaKematian'])->name('admin-destroyPengajuanAktaKematian');
     });
 // masyarakat
 Route::prefix('penduduk')

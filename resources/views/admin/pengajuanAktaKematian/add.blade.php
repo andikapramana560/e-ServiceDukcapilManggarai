@@ -39,7 +39,7 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan jenis pengajuan
+                                        Untuk form dokumen, anda hanya perlu mengisi sesuai dengan <b>Jenis Pengajuan</b>
                                     </div>
                                 </div><!-- End activity item-->
                                 <div class="activity-item d-flex">
@@ -51,7 +51,8 @@
                                 <div class="activity-item d-flex">
                                     <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
                                     <div class="activity-content">
-                                        Jika semua form telah terisi, silahkan klik tombol submit
+                                        Jika semua form telah terisi sesuai dengan <b>Jenis Pengajuan</b>, silahkan klik
+                                        tombol submit
                                     </div>
                                 </div><!-- End activity item-->
 
@@ -114,18 +115,25 @@
                                     <div class="tab-pane fade show active data-pribadi" id="data-pribadi">
                                         <div class="row g-3">
                                             <div class="col-6">
+                                                <label for="validationCustom04" class="form-label">Pilih Penduduk yang
+                                                    Mengajukan</label>
+                                                <select class="form-select" name="id_penduduk" required>
+                                                    <option selected disabled value="">Pilih...</option>
+                                                    @foreach ($penduduk as $p)
+                                                        <option value="{{ $p->id }}">{{ $p->nama }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-6">
                                                 <label for="yourPassword" class="form-label">Jenis Pengajuan</label>
                                                 <select class="form-select @error('jns_pengajuan') is-invalid @enderror"
                                                     id="validationCustom04" name="jns_pengajuan" required>
                                                     <option selected disabled value="">Pilih...</option>
-                                                    <option value="Penerbitan Akta Kelahiran Baru">Penerbitan Akta
-                                                        Kelahiran Baru</option>
-                                                    <option value="Penerbitan Akta Kelahiran Hilang/Rusak">Penerbitan Akta
-                                                        Kelahiran Hilang/Rusak
+                                                    <option value="Penerbitan Akta Kematian Baru">Penerbitan Akta
+                                                        Kematian Baru</option>
+                                                    <option value="Penerbitan Akta Kematian Hilang/Rusak">Penerbitan Akta
+                                                        Kematian Hilang/Rusak
                                                     </option>
-                                                    <option value="Penerbitan Perubahan Data Akta Kelahiran">Penerbitan
-                                                        Perubahan Data
-                                                        Akta Kelahiran</option>
                                                 </select>
                                                 <div class="invalid-feedback">Please enter your password!</div>
                                             </div>

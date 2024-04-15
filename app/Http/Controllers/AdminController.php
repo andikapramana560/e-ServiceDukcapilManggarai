@@ -312,7 +312,7 @@ class AdminController extends Controller
         Ktp::where('id', $id)
             ->update($validatedData);
         Alert::success('Success', 'Pengajuan berhasil diupdate!');
-        return redirect()->route('pend-pengajuanKtp');
+        return redirect()->route('admin-pengajuanKtp');
     }
 
     public function processPengajuanKtp($id, Request $request)
@@ -622,15 +622,14 @@ class AdminController extends Controller
 
     public function storePengajuanAktaKematian(Request $request)
     {
-        // get user id penduduk
-        $id_penduduk = auth()->user()->id_penduduk;
         $validatedData = $request->validate([
+            'id_penduduk' => 'required',
+            'jns_pengajuan' => 'required',
             'nama_alm_pend' => 'required',
             'jns_kel_alm' => 'required',
             'tmp_lahir_alm' => 'required',
             'tgl_lahir_alm' => 'required|date',
             'tgl_meninggal' => 'required|date',
-            'jns_pengajuan' => 'required',
             // pengajuan 1
             'dok_surat_ket_kematian' => 'file|max:1024',
             'dok_akta_kel_suami_istri' => 'file|max:1024',
@@ -646,7 +645,6 @@ class AdminController extends Controller
             'dok_fc_ktp_saksi2' => 'file|max:1024',
             'dok_fc_kk2' => 'file|max:1024',
         ]);
-        $validatedData['id_penduduk'] = $id_penduduk;
         $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
         // pengajuan 1
         if ($request->file('dok_surat_ket_kematian')) {
@@ -692,10 +690,11 @@ class AdminController extends Controller
         $validatedData['status'] = 0;
         AktaKematian::create($validatedData);
         Alert::success('Berhasil!', 'Pengajuan Akta Kematian Baru telah ditambahkan');
-        return redirect()->route('pend-pengajuanAkm');
+        return redirect()->route('admin-pengajuanAktaKematian');
     }
     public function showPengajuanAktaKematian($id)
     {
+        $penduduk = DB::table('penduduk')->get();
         $pengajuanAkm = DB::table('akta_kematian')
             ->join('penduduk', 'akta_kematian.id_penduduk', 'penduduk.id')
             ->select('akta_kematian.*', 'penduduk.nama')
@@ -703,7 +702,8 @@ class AdminController extends Controller
             ->get();
         return view('admin.pengajuanAktaKematian.show', [
             'title' => 'Pengajuan',
-            'akm' => $pengajuanAkm
+            'akm' => $pengajuanAkm,
+            'penduduk' => $penduduk
         ]);
     }
     public function processPengajuanAktaKematian($id, Request $request)
@@ -716,10 +716,12 @@ class AdminController extends Controller
     }
     public function editPengajuanAktaKematian($id)
     {
+        $penduduk = DB::table('penduduk')->get();
         $pengajuanAkm = DB::table('akta_kematian')->where('id', $id)->get();
         return view('admin.pengajuanAktaKematian.edit', [
             'title' => 'Pengajuan',
-            'akm' => $pengajuanAkm
+            'akm' => $pengajuanAkm,
+            'penduduk' => $penduduk
         ]);
     }
     public function updatePengajuanAktaKematian(Request $request, $id)
@@ -730,6 +732,7 @@ class AdminController extends Controller
             'tmp_lahir_alm' => 'required',
             'tgl_lahir_alm' => 'required|date',
             'tgl_meninggal' => 'required|date',
+            // pengajuan 1
             'dok_surat_ket_kematian' => 'file|max:1024',
             'dok_akta_kel_suami_istri' => 'file|max:1024',
             'dok_fc_ktp_alm' => 'file|max:1024',
@@ -737,8 +740,14 @@ class AdminController extends Controller
             'dok_fc_ktp_ahli_waris' => 'file|max:1024',
             'dok_fc_kk' => 'file|max:1024',
             'dok_fc_ktp_saksi' => 'file|max:1024',
+            // pengajuan 2
+            'dok_surat_ket_hilang' => 'file|max:1024',
+            'dok_fc_akta_hilang' => 'file|max:1024',
+            'dok_fc_ktp_alm2' => 'file|max:1024',
+            'dok_fc_ktp_saksi2' => 'file|max:1024',
+            'dok_fc_kk2' => 'file|max:1024',
         ]);
-        $validatedData['tgl_pengajuan'] = Carbon::now()->format('Y-m-d');
+        // pengajuan 1
         if ($request->file('dok_surat_ket_kematian')) {
             $validatedData['dok_surat_ket_kematian'] = $request->file('dok_surat_ket_kematian')->store('dokumen-pengajuan-aktaKematian');
         }
@@ -760,30 +769,35 @@ class AdminController extends Controller
         if ($request->file('dok_fc_ktp_saksi')) {
             $validatedData['dok_fc_ktp_saksi'] = $request->file('dok_fc_ktp_saksi')->store('dokumen-pengajuan-aktaKematian');
         }
+        // pengajuan 2
+        if ($request->file('dok_surat_ket_hilang')) {
+            $validatedData['dok_surat_ket_hilang'] = $request->file('dok_surat_ket_hilang')->store('dokumen-pengajuan-aktaKematian');
+        }
+        if ($request->file('dok_fc_akta_hilang')) {
+            $validatedData['dok_fc_akta_hilang'] = $request->file('dok_fc_akta_hilang')->store('dokumen-pengajuan-aktaKematian');
+        }
+        if ($request->file('dok_fc_ktp_alm2')) {
+            $validatedData['dok_fc_ktp_alm2'] = $request->file('dok_fc_ktp_alm2')->store('dokumen-pengajuan-aktaKematian');
+        }
+        if ($request->file('dok_fc_ktp_saksi2')) {
+            $validatedData['dok_fc_ktp_saksi2'] = $request->file('dok_fc_ktp_saksi2')->store('dokumen-pengajuan-aktaKematian');
+        }
+        if ($request->file('dok_fc_kk2')) {
+            $validatedData['dok_fc_kk2'] = $request->file('dok_fc_kk2')->store('dokumen-pengajuan-aktaKematian');
+        }
         $validatedData['keterangan'] = $request->keterangan;
-        $validatedData['catatan'] = NULL;
         $validatedData['status'] = 0;
 
         AktaKematian::where('id', $id)
             ->update($validatedData);
         Alert::success('Success', 'Pengajuan berhasil diupdate!');
-        return redirect()->route('admin-pengajuanAkm');
+        return redirect()->route('admin-pengajuanAktaKematian');
     }
     public function destroyPengajuanAktaKematian($id)
     {
-        $pengajuanAkm = DB::table('akta_kematian')->where('id', $id)->get();
-        Storage::delete([
-            $pengajuanAkm[0]->dok_surat_ket_kematian,
-            $pengajuanAkm[0]->dok_akta_kel_suami_istri,
-            $pengajuanAkm[0]->dok_fc_ktp_alm,
-            $pengajuanAkm[0]->dok_fc_akta_kel_alm,
-            $pengajuanAkm[0]->dok_fc_ktp_ahli_waris,
-            $pengajuanAkm[0]->dok_fc_kk,
-            $pengajuanAkm[0]->dok_fc_ktp_saksi
-        ]);
         AktaKematian::where('id', $id)->delete();
         Alert::success('Success', 'Pengajuan berhasil dihapus!');
-        return redirect()->route('admin-pengajuanAkm');
+        return redirect()->route('admin-pengajuanAktaKematian');
     }
     // end pengajuan Akta Kematian
 
