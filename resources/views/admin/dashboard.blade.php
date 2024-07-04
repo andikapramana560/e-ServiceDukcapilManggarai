@@ -11,42 +11,22 @@
                     <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
-        </div><!-- End Page Title -->
+        </div>
 
         <section class="section dashboard">
             <div class="row">
-                <!-- Left side columns -->
                 <div class="col-lg-12">
                     <div class="row">
-
-                        <!-- Sales Card -->
                         <div class="col-md-6">
                             <div class="card info-card sales-card">
                                 <div class="card-body">
                                     <h3 class="card-title">Selamat Datang</h3>
                                     <p>Sistem Informasi E-service Dinas Kependudukan dan Pencatatan Sipil Kabupaten
                                         Manggarai.</p>
-                                    {{-- 
-                                  <div class="d-flex align-items-center">
-                                      <div
-                                          class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                          <i class="bi bi-cart"></i>
-                                      </div>
-                                      <div class="ps-3">
-                                          <h6>145</h6>
-                                          <span class="text-success small pt-1 fw-bold">12%</span> <span
-                                              class="text-muted small pt-2 ps-1">increase</span>
-
-                                      </div>
-                                  </div> --}}
                                 </div>
                             </div>
-                        </div><!-- End Sales Card -->
-                    </div>
-                </div><!-- End Left side columns -->
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-xxl-4 col-md-6">
+                        </div>
+                        <div class="col-md-6">
                             <div class="card info-card sales-card">
 
                                 <div class="card-body">
@@ -62,39 +42,222 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                        </div><!-- End Sales Card -->
+                        </div>
+                    </div>
+                </div>
+                
+                {{-- Card Pengajuan KTP --}}
+                <div class="col-lg-12">
+                    <div class="row">
                         <div class="col-xxl-4 col-md-6">
                             <div class="card info-card sales-card">
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Jumlah Pengajuan</h5>
+                                    <h5 class="card-title">Jumlah Pengajuan KTP</h5>
 
                                     <div class="d-flex align-items-center">
                                         <div
                                             class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                            <i class="bi bi-file-earmark"></i>
+                                            <i class="bi bi-person"></i>
                                         </div>
                                         <div class="ps-3">
-                                            <h6>145 Orang</h6>
-                                            <span class="text-primary small pt-1 fw-bold">10</span> <span
-                                                class="text-muted small pt-2 ps-1">Pengajuan KTP</span><br>
-                                            <span class="text-secondary small pt-1 fw-bold">10</span> <span
-                                                class="text-muted small pt-2 ps-1">Pengajuan KK</span><br>
-                                            <span class="text-success small pt-1 fw-bold">10</span> <span
-                                                class="text-muted small pt-2 ps-1">Pengajuan Akta Kelahiran</span><br>
-                                            <span class="text-warning small pt-1 fw-bold">10</span> <span
-                                                class="text-muted small pt-2 ps-1">Pengajuan Akta Kematian</span>
+                                            <h6>145 Pengajuan</h6>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-                        </div><!-- End Sales Card -->
-
+                        </div>
                     </div>
                 </div>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Pengajuan KTP</h5>
+                        <a href="{{ route('admin-addPengajuanKtp') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
+      
+                        <table class="table table-borderless datatable">
+                          <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Jenis Pengajuan</th>
+                                <th scope="col">User Pemohon</th>
+                                <th scope="col">Tanggal Pengajuan</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Tempat, Tanggal Lahir</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+                {{-- Card Pengajuan KTP --}}
+
+                {{-- Card Pengajuan KK --}}
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Jumlah Pengajuan KK</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>145 Pengajuan</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Pengajuan KK</h5>
+                        <a href="{{ route('admin-addPengajuanKtp') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
+      
+                        <table class="table table-borderless datatable">
+                          <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Jenis Pengajuan</th>
+                                <th scope="col">User Pemohon</th>
+                                <th scope="col">Tanggal Pengajuan</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Tempat, Tanggal Lahir</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+                {{-- Card Pengajuan KK --}}
+                
+                {{-- Card Pengajuan Akta Kelahiran --}}
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Jumlah Pengajuan Akta Kelahiran</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>145 Pengajuan</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Pengajuan Akta Kelahiran</h5>
+                        <a href="{{ route('admin-addPengajuanKtp') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
+      
+                        <table class="table table-borderless datatable">
+                          <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Jenis Pengajuan</th>
+                                <th scope="col">User Pemohon</th>
+                                <th scope="col">Tanggal Pengajuan</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Tempat, Tanggal Lahir</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+                {{-- Card Pengajuan Akta Kelahiran --}}
+
+                {{-- Card Pengajuan Akta Kematian --}}
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-xxl-4 col-md-6">
+                            <div class="card info-card sales-card">
+
+                                <div class="card-body">
+                                    <h5 class="card-title">Jumlah Pengajuan Akta Kematian</h5>
+
+                                    <div class="d-flex align-items-center">
+                                        <div
+                                            class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                            <i class="bi bi-person"></i>
+                                        </div>
+                                        <div class="ps-3">
+                                            <h6>145 Pengajuan</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="card recent-sales overflow-auto">
+      
+                      <div class="card-body">
+                        <h5 class="card-title">Pengajuan Akta Kematian</h5>
+                        <a href="{{ route('admin-addPengajuanKtp') }}" class="btn btn-primary mb-4">Tambah Pengajuan</a>
+      
+                        <table class="table table-borderless datatable">
+                          <thead>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Jenis Pengajuan</th>
+                                <th scope="col">User Pemohon</th>
+                                <th scope="col">Tanggal Pengajuan</th>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Tempat, Tanggal Lahir</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Opsi</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                </div>
+                {{-- Card Pengajuan Akta Kematian --}}
             </div>
         </section>
 
