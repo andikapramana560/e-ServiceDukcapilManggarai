@@ -18,8 +18,37 @@ class AdminController extends Controller
 {
     public function index()
     {
+        $countPenduduk = DB::table('penduduk')->count();
+        $countKTP = DB::table('kartu_tanda_penduduk')->count();
+        $countKK = DB::table('kartu_keluarga')->count();
+        $countAKL = DB::table('akta_kelahiran')->count();
+        $countAKM = DB::table('akta_kematian')->count();
+
+        $pengajuanKtp = DB::table('kartu_tanda_penduduk')
+            ->join('penduduk', 'kartu_tanda_penduduk.id_penduduk', 'penduduk.id')
+            ->select('kartu_tanda_penduduk.*', 'penduduk.nama')
+            ->get();
+
+        $pengajuanAkl = DB::table('akta_kelahiran')
+            ->join('penduduk', 'akta_kelahiran.id_penduduk', 'penduduk.id')
+            ->select('akta_kelahiran.*', 'penduduk.nama')
+            ->get();
+        
+        $pengajuanAkm = DB::table('akta_kematian')
+            ->join('penduduk', 'akta_kematian.id_penduduk', 'penduduk.id')
+            ->select('akta_kematian.*', 'penduduk.nama')
+            ->get();
+        
         return view('admin.dashboard', [
-            'title' => 'Dashboard'
+            'title' => 'Dashboard',
+            'countPenduduk' => $countPenduduk,
+            'countKTP' => $countKTP,
+            'countKK' => $countKK,
+            'countAKL' => $countAKL,
+            'countAKM' => $countAKM,
+            'pengajuanKtp' => $pengajuanKtp,
+            'pengajuanAkl' => $pengajuanAkl,
+            'pengajuanAkm' => $pengajuanAkm,
         ]);
     }
 
